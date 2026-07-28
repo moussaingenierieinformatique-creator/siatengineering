@@ -9,38 +9,148 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CarriereRouteImport } from './routes/carriere'
+import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SavoirFaireIndexRouteImport } from './routes/savoir-faire/index'
+import { Route as SavoirFaireSlugRouteImport } from './routes/savoir-faire/$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarriereRoute = CarriereRouteImport.update({
+  id: '/carriere',
+  path: '/carriere',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SavoirFaireIndexRoute = SavoirFaireIndexRouteImport.update({
+  id: '/savoir-faire/',
+  path: '/savoir-faire/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavoirFaireSlugRoute = SavoirFaireSlugRouteImport.update({
+  id: '/savoir-faire/$slug',
+  path: '/savoir-faire/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/carriere': typeof CarriereRoute
+  '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
+  '/savoir-faire/': typeof SavoirFaireIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/carriere': typeof CarriereRoute
+  '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
+  '/savoir-faire': typeof SavoirFaireIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/carriere': typeof CarriereRoute
+  '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
+  '/savoir-faire/': typeof SavoirFaireIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/a-propos'
+    | '/carriere'
+    | '/contact'
+    | '/sitemap.xml'
+    | '/savoir-faire/$slug'
+    | '/savoir-faire/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/a-propos'
+    | '/carriere'
+    | '/contact'
+    | '/sitemap.xml'
+    | '/savoir-faire/$slug'
+    | '/savoir-faire'
+  id:
+    | '__root__'
+    | '/'
+    | '/a-propos'
+    | '/carriere'
+    | '/contact'
+    | '/sitemap.xml'
+    | '/savoir-faire/$slug'
+    | '/savoir-faire/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
+  CarriereRoute: typeof CarriereRoute
+  ContactRoute: typeof ContactRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SavoirFaireSlugRoute: typeof SavoirFaireSlugRoute
+  SavoirFaireIndexRoute: typeof SavoirFaireIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carriere': {
+      id: '/carriere'
+      path: '/carriere'
+      fullPath: '/carriere'
+      preLoaderRoute: typeof CarriereRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +158,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/savoir-faire/': {
+      id: '/savoir-faire/'
+      path: '/savoir-faire'
+      fullPath: '/savoir-faire/'
+      preLoaderRoute: typeof SavoirFaireIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/savoir-faire/$slug': {
+      id: '/savoir-faire/$slug'
+      path: '/savoir-faire/$slug'
+      fullPath: '/savoir-faire/$slug'
+      preLoaderRoute: typeof SavoirFaireSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
+  CarriereRoute: CarriereRoute,
+  ContactRoute: ContactRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SavoirFaireSlugRoute: SavoirFaireSlugRoute,
+  SavoirFaireIndexRoute: SavoirFaireIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
