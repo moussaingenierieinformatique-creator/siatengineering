@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SavoirFaireIndexRouteImport } from './routes/savoir-faire/index'
 
 const AProposRoute = AProposRouteImport.update({
   id: '/a-propos',
@@ -22,31 +23,40 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SavoirFaireIndexRoute = SavoirFaireIndexRouteImport.update({
+  id: '/savoir-faire/',
+  path: '/savoir-faire/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/savoir-faire/': typeof SavoirFaireIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/savoir-faire': typeof SavoirFaireIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/savoir-faire/': typeof SavoirFaireIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/a-propos'
+  fullPaths: '/' | '/a-propos' | '/savoir-faire/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/a-propos'
-  id: '__root__' | '/' | '/a-propos'
+  to: '/' | '/a-propos' | '/savoir-faire'
+  id: '__root__' | '/' | '/a-propos' | '/savoir-faire/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
+  SavoirFaireIndexRoute: typeof SavoirFaireIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/savoir-faire/': {
+      id: '/savoir-faire/'
+      path: '/savoir-faire'
+      fullPath: '/savoir-faire/'
+      preLoaderRoute: typeof SavoirFaireIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
+  SavoirFaireIndexRoute: SavoirFaireIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
