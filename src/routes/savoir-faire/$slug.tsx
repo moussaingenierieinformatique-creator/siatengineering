@@ -1,11 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { DOMAINS, getDomain } from "@/lib/site-data";
+import { DOMAINS, getDomain, type Domain } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
 
 export const Route = createFileRoute("/savoir-faire/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): Domain => {
     const domain = getDomain(params.slug);
     if (!domain) throw notFound();
     return domain;
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/savoir-faire/$slug")({
 });
 
 function DomainePage() {
-  const domain = Route.useLoaderData();
+  const domain = Route.useLoaderData() as Domain;
   const idx = DOMAINS.findIndex((d) => d.slug === domain.slug);
   const next = DOMAINS[(idx + 1) % DOMAINS.length];
   const cover = photo(domain.images[0]);

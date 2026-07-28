@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SavoirFaireIndexRouteImport } from './routes/savoir-faire/index'
+import { Route as SavoirFaireSlugRouteImport } from './routes/savoir-faire/$slug'
 
 const AProposRoute = AProposRouteImport.update({
   id: '/a-propos',
@@ -28,34 +29,43 @@ const SavoirFaireIndexRoute = SavoirFaireIndexRouteImport.update({
   path: '/savoir-faire/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SavoirFaireSlugRoute = SavoirFaireSlugRouteImport.update({
+  id: '/savoir-faire/$slug',
+  path: '/savoir-faire/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
   '/savoir-faire/': typeof SavoirFaireIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
   '/savoir-faire': typeof SavoirFaireIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
   '/savoir-faire/': typeof SavoirFaireIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/a-propos' | '/savoir-faire/'
+  fullPaths: '/' | '/a-propos' | '/savoir-faire/$slug' | '/savoir-faire/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/a-propos' | '/savoir-faire'
-  id: '__root__' | '/' | '/a-propos' | '/savoir-faire/'
+  to: '/' | '/a-propos' | '/savoir-faire/$slug' | '/savoir-faire'
+  id: '__root__' | '/' | '/a-propos' | '/savoir-faire/$slug' | '/savoir-faire/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
+  SavoirFaireSlugRoute: typeof SavoirFaireSlugRoute
   SavoirFaireIndexRoute: typeof SavoirFaireIndexRoute
 }
 
@@ -82,12 +92,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SavoirFaireIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/savoir-faire/$slug': {
+      id: '/savoir-faire/$slug'
+      path: '/savoir-faire/$slug'
+      fullPath: '/savoir-faire/$slug'
+      preLoaderRoute: typeof SavoirFaireSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
+  SavoirFaireSlugRoute: SavoirFaireSlugRoute,
   SavoirFaireIndexRoute: SavoirFaireIndexRoute,
 }
 export const routeTree = rootRouteImport
