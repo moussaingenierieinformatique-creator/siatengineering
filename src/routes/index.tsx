@@ -70,16 +70,16 @@ function Accueil() {
 
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-navy-deep">
+    <section className="relative isolate bg-navy-deep">
       <img
         src={hero.url}
         alt="Équipes d'ingénieurs SIAT-Engineering en réunion d'études et en supervision de chantier"
         width={1920}
         height={1088}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="block h-auto w-full object-contain"
       />
-      <div className="absolute inset-0" style={{ backgroundImage: "var(--gradient-hero)" }} />
-      <div className="relative mx-auto max-w-7xl px-5 py-28 lg:px-8 lg:py-40">
+      <div className="relative mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
+
         <p className="eyebrow animate-fade-up">Bureau d'études & supervision de travaux</p>
         <h1 className="animate-fade-up mt-5 max-w-3xl text-4xl font-bold leading-[1.05] text-primary-foreground sm:text-5xl lg:text-6xl">
           Groupe SIAT-Engineering
