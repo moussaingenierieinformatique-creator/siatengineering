@@ -34,7 +34,13 @@ function APropos() {
         eyebrow="À propos"
         title="Une société d'ingénierie à vocation régionale"
         intro="Études techniques et supervision de travaux pour les projets qui structurent l'Afrique centrale et de l'Ouest."
-        image={photo("img_p7_4")}
+        images={[
+          photo("img_p7_4"),
+          photo("img_p8_8"),
+          photo("img_p9_1"),
+          photo("img_p10_6"),
+          photo("img_p11_2"),
+        ]}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">

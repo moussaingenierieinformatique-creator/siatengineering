@@ -30,6 +30,15 @@ export const Route = createFileRoute("/contact")({
 const inputClass =
   "w-full rounded-sm border border-input bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-accent";
 
+const FLAGS: Record<string, string> = {
+  Cameroun: "https://flagcdn.com/w1280/cm.png",
+  "République Centrafricaine": "https://flagcdn.com/w1280/cf.png",
+  Tchad: "https://flagcdn.com/w1280/td.png",
+  Niger: "https://flagcdn.com/w1280/ne.png",
+  Mali: "https://flagcdn.com/w1280/ml.png",
+  Nigeria: "https://flagcdn.com/w1280/ng.png",
+};
+
 function Contact() {
   const [sent, setSent] = useState(false);
 
@@ -45,7 +54,13 @@ function Contact() {
         eyebrow="Contact"
         title="Parlons de votre projet"
         intro="Nos équipes vous répondent sous 48 heures depuis l'une de nos six implantations."
-        image={photo("img_p7_1")}
+        images={[
+          photo("img_p7_1"),
+          photo("img_p9_2"),
+          photo("img_p10_2"),
+          photo("img_p12_2"),
+          photo("img_p13_6"),
+        ]}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
@@ -106,7 +121,17 @@ function Contact() {
             </div>
             <div className="mt-8 space-y-5">
               {COUNTRIES.map((c) => (
-                <div key={c.pays} className="rounded-sm border border-border bg-card p-6">
+                <div
+                  key={c.pays}
+                  className="relative isolate overflow-hidden rounded-sm border border-border bg-card p-6"
+                >
+                  <img
+                    src={FLAGS[c.pays]}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-15"
+                  />
                   <div className="flex items-baseline justify-between gap-3">
                     <h3 className="font-display text-base font-semibold text-foreground">
                       {c.pays}
