@@ -62,26 +62,45 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.25rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.22 0.045 264);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.22 0.045 264);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.22 0.045 264);
+  /* SIAT navy */
+  --primary: oklch(0.29 0.083 265);
+  --primary-foreground: oklch(0.99 0.003 250);
+  --secondary: oklch(0.96 0.008 255);
+  --secondary-foreground: oklch(0.29 0.083 265);
+  --muted: oklch(0.965 0.007 255);
+  --muted-foreground: oklch(0.52 0.03 258);
+  /* SIAT red */
+  --accent: oklch(0.52 0.209 27.5);
+  --accent-foreground: oklch(0.99 0.003 250);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.905 0.012 255);
+  --input: oklch(0.9 0.012 255);
+  --ring: oklch(0.29 0.083 265);
+
+  --navy-deep: oklch(0.22 0.07 266);
+  --surface: oklch(0.975 0.006 250);
+  --gradient-hero: linear-gradient(
+    100deg,
+    oklch(0.22 0.07 266 / 0.94) 0%,
+    oklch(0.29 0.083 265 / 0.82) 45%,
+    oklch(0.29 0.083 265 / 0.35) 100%
+  );
+  --gradient-navy: linear-gradient(135deg, oklch(0.22 0.07 266) 0%, oklch(0.32 0.086 264) 100%);
+  --shadow-card: 0 1px 2px oklch(0.29 0.083 265 / 0.06), 0 12px 28px -18px oklch(0.29 0.083 265 / 0.35);
+  --shadow-lift: 0 2px 4px oklch(0.29 0.083 265 / 0.08), 0 22px 44px -20px oklch(0.29 0.083 265 / 0.45);
+  --transition-base: 320ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -96,6 +115,7 @@
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
 }
+
 
 .dark {
   --background: oklch(0.129 0.042 264.695);
@@ -140,5 +160,84 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
   }
 }
+
+@theme inline {
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+  --color-navy-deep: var(--navy-deep);
+  --color-surface: var(--surface);
+}
+
+@utility surface-navy {
+  background-image: var(--gradient-navy);
+  color: var(--color-primary-foreground);
+}
+
+@utility eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+@utility rule-accent {
+  position: relative;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+}
+
+@utility card-lift {
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 42s linear infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-fade-up {
+  animation: fade-up 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+

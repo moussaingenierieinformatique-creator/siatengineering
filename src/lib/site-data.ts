@@ -1,0 +1,454 @@
+import { photo } from "./photos";
+
+export const SITE = {
+  name: "Groupe SIAT-Engineering",
+  baseline: "L'ingénierie au service des infrastructures durables en Afrique.",
+  email: "contact@siat-engineering.com",
+  hq: "Garoua, Cameroun",
+};
+
+export type Country = {
+  pays: string;
+  statut: string;
+  ville: string;
+  telephones: string[];
+  directeur?: string;
+  emailDirection?: string;
+};
+
+export const COUNTRIES: Country[] = [
+  {
+    pays: "Cameroun",
+    statut: "Siège social",
+    ville: "Garoua",
+    telephones: ["(00237) 691 30 30 91", "(00237) 691 83 50 89", "(00237) 654 08 66 66"],
+    directeur: "Abdoulaye Hamadou",
+    emailDirection: "direction.cameroun@siatengineering.com",
+  },
+  {
+    pays: "République Centrafricaine",
+    statut: "Représentation",
+    ville: "Bangui",
+    telephones: ["(00236) 74 57 00 17", "(00236) 70 02 22 66"],
+    directeur: "Jean-Paul Ngaïssona",
+    emailDirection: "direction.rca@siatengineering.com",
+  },
+  {
+    pays: "Tchad",
+    statut: "Représentation",
+    ville: "N'Djaména",
+    telephones: ["(00235) 66 38 81 59", "(00235) 90 27 21 20"],
+    directeur: "Moussa Abakar",
+    emailDirection: "direction.tchad@siatengineering.com",
+  },
+  {
+    pays: "Niger",
+    statut: "Représentation",
+    ville: "Niamey",
+    telephones: ["(00227) 96 14 77 14", "(00227) 93 48 21 21"],
+    directeur: "Ibrahim Moussa Saley",
+    emailDirection: "direction.niger@siatengineering.com",
+  },
+  {
+    pays: "Mali",
+    statut: "Représentation",
+    ville: "Bamako",
+    telephones: ["(00223) 70 44 79 80"],
+    directeur: "Oumar Traoré",
+    emailDirection: "direction.mali@siatengineering.com",
+  },
+  {
+    pays: "Nigeria",
+    statut: "Représentation",
+    ville: "Abuja",
+    telephones: ["(00234) 080 878 380 06"],
+    directeur: "Chukwuemeka Okafor",
+    emailDirection: "direction.nigeria@siatengineering.com",
+  },
+];
+
+export type Domain = {
+  slug: string;
+  numero: number;
+  titre: string;
+  accroche: string;
+  etapes: { titre: string; texte: string }[];
+  images: string[];
+};
+
+export const DOMAINS: Domain[] = [
+  {
+    slug: "etudes-techniques",
+    numero: 1,
+    titre: "Études Techniques",
+    accroche:
+      "De l'étude préalable à la réception des travaux, une maîtrise complète du cycle de projet.",
+    etapes: [
+      {
+        titre: "Étude préalable et diagnostic",
+        texte: "Collecte des données, rédaction du cahier des charges.",
+      },
+      {
+        titre: "Consultation et passation des marchés",
+        texte:
+          "Lancement des appels d'offres, finalisation des contrats, validation des documents, planification opérationnelle, installation de chantier.",
+      },
+      {
+        titre: "Direction et suivi des travaux",
+        texte: "Pilotage et coordination, contrôle qualité et financier, gestion des délais.",
+      },
+      {
+        titre: "Réception et clôture",
+        texte:
+          "Opérations préalables à la réception (OPR), levée des réserves et réception, clôture administrative.",
+      },
+    ],
+    images: ["img_p7_1", "img_p7_2", "img_p7_3", "img_p7_4"],
+  },
+  {
+    slug: "assistance-technique",
+    numero: 2,
+    titre: "Assistance Technique",
+    accroche: "Un appui technique à chaque étape, du cadrage du besoin à la réception des travaux.",
+    etapes: [
+      {
+        titre: "Analyse et cadrage du besoin",
+        texte: "Diagnostic, définition des objectifs, Termes de Référence (TDR).",
+      },
+      {
+        titre: "Études préliminaires et de faisabilité",
+        texte: "Études techniques et environnementales, évaluation budgétaire.",
+      },
+      {
+        titre: "Planification opérationnelle",
+        texte: "Découpage des tâches, chronogramme, plan de gestion des risques.",
+      },
+      {
+        titre: "Planification des procédures et passation des marchés",
+        texte:
+          "Dossier de Consultation des Entreprises (DCE), processus d'appel d'offres, assistance au choix des entreprises.",
+      },
+      {
+        titre: "Préparation de l'exécution",
+        texte:
+          "Mise en place des outils de suivi, plan de communication, audit technique et organisationnel, manuel de gestion des ouvrages et équipements.",
+      },
+      {
+        titre: "Analyse et capital humain",
+        texte:
+          "Sélection des experts, attribution des rôles, pilotage, supervision, contrôle des travaux et réception des travaux.",
+      },
+    ],
+    images: ["img_p8_1", "img_p8_2", "img_p8_3", "img_p8_4"],
+  },
+  {
+    slug: "infrastructures-de-transports",
+    numero: 3,
+    titre: "Infrastructures de Transports",
+    accroche: "Routes, ouvrages d'art et pistes rurales : de la planification à la mise en service.",
+    etapes: [
+      {
+        titre: "Planification et études d'opportunité",
+        texte:
+          "Identification des besoins de mobilité et de développement socio-économique, études de faisabilité géotechniques, environnementales et économiques.",
+      },
+      {
+        titre: "Conception et études détaillées",
+        texte:
+          "Tracés, profils, dimensionnement des chaussées et des ouvrages, pièces écrites et plans d'exécution.",
+      },
+      {
+        titre: "Passation des marchés et travaux",
+        texte: "Assistance aux maîtres d'ouvrage au choix des entreprises.",
+      },
+      {
+        titre: "Réception et mise en service",
+        texte: "Inspection finale et réception des ouvrages.",
+      },
+    ],
+    images: ["img_p8_5", "img_p8_6", "img_p8_7", "img_p8_8"],
+  },
+  {
+    slug: "ouvrages-de-franchissement",
+    numero: 4,
+    titre: "Infrastructures des Ouvrages de Franchissement",
+    accroche: "Ponts et ouvrages d'art : une ingénierie de précision, du sol à la structure.",
+    etapes: [
+      {
+        titre: "Études préliminaires et reconnaissance du site",
+        texte:
+          "Levé et délimitation du site, profils en long et en travers, campagnes de reconnaissance du sol.",
+      },
+      {
+        titre: "Études hydrologiques et hydrauliques",
+        texte: "Délimitation du bassin versant, calcul des débits de crue.",
+      },
+      {
+        titre: "Choix et conception de l'ouvrage",
+        texte:
+          "Sélection de la solution technique, études de variantes, prédimensionnement, modélisation numérique.",
+      },
+      {
+        titre: "Calculs justificatifs",
+        texte:
+          "Vérification de la résistance des matériaux et de la stabilité globale, calcul du ferraillage.",
+      },
+      {
+        titre: "Dossier de consultation",
+        texte: "Établissement des plans détaillés et rédaction des pièces écrites.",
+      },
+    ],
+    images: ["img_p9_1", "img_p9_2", "img_p9_3", "img_p9_4"],
+  },
+  {
+    slug: "infrastructures-des-batiments",
+    numero: 5,
+    titre: "Infrastructures des Bâtiments",
+    accroche:
+      "Édifices publics, logements et équipements : une conception jusqu'au moindre détail technique.",
+    etapes: [
+      {
+        titre: "Étude de faisabilité et programmation",
+        texte: "Analyse des besoins, étude du site, étude géotechnique.",
+      },
+      {
+        titre: "Esquisse et avant-projets",
+        texte: "Avant-Projet Sommaire (APS), Avant-Projet Définitif (APD).",
+      },
+      {
+        titre: "Études techniques et de structure",
+        texte: "Études de structure, études des fluides (plomberie, climatisation/froid).",
+      },
+      {
+        titre: "Dossier de Consultation des Entreprises (DCE)",
+        texte:
+          "Cahier des Clauses Techniques Particulières (CCTP), Devis Quantitatif et Estimatif (DQE).",
+      },
+      {
+        titre: "Plans d'exécution et planification opérationnelle",
+        texte: "Plans d'exécution, planning prévisionnel.",
+      },
+    ],
+    images: ["img_p10_1", "img_p10_2", "img_p10_3", "img_p10_4"],
+  },
+  {
+    slug: "hydraulique-rurale",
+    numero: 6,
+    titre: "Hydraulique Rurale",
+    accroche: "Mobiliser et gérer l'eau au service du développement rural.",
+    etapes: [
+      {
+        titre: "Identification et diagnostic",
+        texte:
+          "Collecte des données sur le terrain, analyse de faisabilité sociale, économique et environnementale.",
+      },
+      {
+        titre: "Conception et dimensionnement",
+        texte:
+          "Choix des ouvrages de mobilisation, dimensionnement des réseaux et des points d'eau.",
+      },
+      {
+        titre: "Gestion et renforcement des capacités",
+        texte:
+          "Formation des comités d'usagers locaux, répartition équitable de l'eau, sauvegarde du foncier.",
+      },
+      {
+        titre: "Exploitation et maintenance",
+        texte: "Système de suivi, maintenance préventive, réparation des pompes.",
+      },
+    ],
+    images: ["img_p10_5", "img_p10_6", "img_p10_7", "img_p10_8"],
+  },
+  {
+    slug: "hydraulique-urbaine-assainissement",
+    numero: 7,
+    titre: "Hydraulique Urbaine et Assainissement",
+    accroche: "L'eau potable et l'assainissement au cœur du développement urbain.",
+    etapes: [
+      {
+        titre: "Étude et diagnostic",
+        texte:
+          "Recueil des données démographiques, topographiques, hydrologiques et géotechniques, évaluation des infrastructures d'eau et d'assainissement.",
+      },
+      {
+        titre: "Objectifs de zonage et besoins en eau",
+        texte: "Calcul des volumes d'eau potable, zonage d'assainissement.",
+      },
+      {
+        titre: "Études techniques de faisabilité",
+        texte:
+          "Comparaison technico-économique du schéma directeur, dimensionnement des canalisations, stations de pompage et de traitement.",
+      },
+      {
+        titre: "Planification financière et institutionnelle",
+        texte:
+          "Calcul du coût d'investissement, recherche de financements, stratégie de gestion.",
+      },
+    ],
+    images: ["img_p11_1", "img_p11_2", "img_p11_3", "img_p11_4"],
+  },
+  {
+    slug: "hydraulique-agricole",
+    numero: 8,
+    titre: "Hydraulique Agricole",
+    accroche: "Irrigation et drainage : sécuriser la production agricole par l'ingénierie.",
+    etapes: [
+      {
+        titre: "Étude, collecte des données et diagnostic",
+        texte: "Levés topographiques, pédologie, climatologie.",
+      },
+      {
+        titre: "Évaluation des ressources en eau et des besoins",
+        texte: "Bilan hydrique, analyse quantitative et qualitative des eaux.",
+      },
+      {
+        titre: "Conception et dimensionnement des ouvrages",
+        texte:
+          "Choix du système d'irrigation/drainage, dimensionnement hydraulique, stations de pompage et de filtration.",
+      },
+      {
+        titre: "Étude économique, financière et environnementale",
+        texte:
+          "Valeur Actuelle Nette (VAN), Étude d'Impact Environnemental et Social (EIES).",
+      },
+      {
+        titre: "Planification opérationnelle et d'exécution",
+        texte:
+          "Plan d'action, chronogramme, Dossier d'Appel d'Offres (DAO), suivi et contrôle des travaux.",
+      },
+    ],
+    images: ["img_p12_1", "img_p12_2", "img_p12_3", "img_p12_4", "img_p12_5", "img_p12_6"],
+  },
+  {
+    slug: "hydraulique-fluviale",
+    numero: 9,
+    titre: "Hydraulique Fluviale",
+    accroche: "Barrages, berges et voies navigables : maîtriser les cours d'eau en toute sécurité.",
+    etapes: [
+      {
+        titre: "Études préliminaires et collecte des données",
+        texte: "Levés topographiques et bathymétriques, études hydrologiques et géotechniques.",
+      },
+      {
+        titre: "Étude et modélisation hydraulique",
+        texte: "Diagnostic technique, analyse structurelle, stabilité des berges.",
+      },
+      {
+        titre: "Évaluation environnementale et sociale",
+        texte: "Étude d'Impact (EIES), biodiversité aquatique, acceptabilité sociale.",
+      },
+      {
+        titre: "Analyse des capacités logistiques et économiques",
+        texte: "Compétitivité du transport fluvial, besoins en dragage.",
+      },
+    ],
+    images: ["img_p13_1", "img_p13_2", "img_p13_3", "img_p13_4"],
+  },
+  {
+    slug: "electricite",
+    numero: 10,
+    titre: "Électricité",
+    accroche: "Des réseaux fiables aux énergies renouvelables, une expertise électrique complète.",
+    etapes: [
+      {
+        titre: "Étude de faisabilité, d'opportunité et analyse des besoins",
+        texte: "Estimation de la puissance nécessaire, bilan de puissance, contraintes locales.",
+      },
+      {
+        titre: "Étude de précision",
+        texte:
+          "Tracés exacts, schémas unifilaires, notes de calcul justificatives, schémas électriques détaillés, simulation et tests virtuels, contrôle de conformité.",
+      },
+      {
+        titre: "Étude de protection et de coordination",
+        texte:
+          "Interconnexion réalisable, transit et flux de puissance, stabilité dynamique du réseau.",
+      },
+    ],
+    images: ["img_p13_5", "img_p13_6", "img_p13_7", "img_p13_8"],
+  },
+  {
+    slug: "environnement",
+    numero: 11,
+    titre: "Environnement",
+    accroche: "Chaque projet évalué, chaque impact anticipé, chaque territoire préservé.",
+    etapes: [
+      {
+        titre: "Étude et analyse d'impact environnemental",
+        texte:
+          "Collecte de données sur le milieu récepteur, analyse des variantes, identification et évaluation des impacts.",
+      },
+      {
+        titre: "Mesures d'atténuation et de compensation",
+        texte: "Plan de Gestion Environnementale et Sociale (PGES).",
+      },
+      {
+        titre: "Consultation publique et validation",
+        texte:
+          "Surveillance et suivi environnemental, mesures et plans de protection environnementale, développement durable.",
+      },
+    ],
+    images: ["img_p14_1", "img_p14_2", "img_p14_3"],
+  },
+  {
+    slug: "etudes-economiques-institutionnelles",
+    numero: 12,
+    titre: "Études Économiques et Institutionnelles",
+    accroche:
+      "Analyser, structurer et sécuriser la dimension économique et institutionnelle des projets.",
+    etapes: [
+      {
+        titre: "Études macro-économiques",
+        texte:
+          "Études sectorielles (industrie, pêche, habitat, agriculture), bilans-diagnostics par branche d'activité.",
+      },
+      {
+        titre: "Études de projet",
+        texte:
+          "Identification et localisation, études de marché, de pré-faisabilité ou de faisabilité, assistance au montage institutionnel et financier.",
+      },
+      {
+        titre: "Diagnostic d'entreprise et assistance à la gestion",
+        texte:
+          "Analyse de la fonction administrative et financière, analyse de la fonction commerciale, analyse de la fonction personnelle et du potentiel technique.",
+      },
+    ],
+    images: ["img_p14_4"],
+  },
+];
+
+export function domainCover(d: Domain): string {
+  return photo(d.images[0]);
+}
+
+export function getDomain(slug: string): Domain | undefined {
+  return DOMAINS.find((d) => d.slug === slug);
+}
+
+export const PARTNERS = [
+  "Banque Africaine de Développement (BAD)",
+  "Banque Mondiale",
+  "Agence Française de Développement (AFD)",
+  "PNUD",
+  "Banque Islamique de Développement (BID)",
+  "Union Européenne",
+  "Eau Vive International",
+  "Commission du Bassin du Lac Tchad (CBLT)",
+  "Bureau Veritas Certification",
+  "CEMAC / CEEAC",
+  "ONG partenaires locales",
+];
+
+export const VALEURS = [
+  "Déployer une démarche professionnelle axée sur l'excellence, fondée sur la transparence et la confiance.",
+  "Demeurer, de manière constante, au diapason des techniques et des méthodes afin d'offrir à ses clients des solutions globales compétitives et performantes.",
+  "Tisser une relation partenariale avec ses clients pour analyser et relever, ensemble, les enjeux techniques, économiques et financiers de leurs projets.",
+  "Entretenir une relation ouverte et loyale avec ses partenaires, fournisseurs et sous-traitants dans un esprit de coopération mutuelle, au seul bénéfice des projets.",
+];
+
+export const CHIFFRES = [
+  { valeur: "6", label: "Pays d'implantation" },
+  { valeur: "12", label: "Domaines d'expertise" },
+  { valeur: "48%", label: "Chiffre d'affaires à l'export" },
+  { valeur: "ISO", label: "Certification en cours" },
+];
