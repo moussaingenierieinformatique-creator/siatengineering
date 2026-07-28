@@ -44,7 +44,13 @@ function Carriere() {
         eyebrow="Carrière"
         title="Construire l'Afrique de demain, avec nous"
         intro="Ingénieurs, techniciens, experts environnement ou économistes : nos équipes pluridisciplinaires se renforcent en continu."
-        image={photo("img_p12_5")}
+        images={[
+          photo("img_p12_5"),
+          photo("img_p7_2"),
+          photo("img_p13_6"),
+          photo("img_p8_6"),
+          photo("img_p14_2"),
+        ]}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">

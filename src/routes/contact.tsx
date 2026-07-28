@@ -45,7 +45,13 @@ function Contact() {
         eyebrow="Contact"
         title="Parlons de votre projet"
         intro="Nos équipes vous répondent sous 48 heures depuis l'une de nos six implantations."
-        image={photo("img_p7_1")}
+        images={[
+          photo("img_p7_1"),
+          photo("img_p9_2"),
+          photo("img_p10_2"),
+          photo("img_p12_2"),
+          photo("img_p13_6"),
+        ]}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
