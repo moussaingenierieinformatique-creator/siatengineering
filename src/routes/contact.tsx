@@ -112,7 +112,17 @@ function Contact() {
             </div>
             <div className="mt-8 space-y-5">
               {COUNTRIES.map((c) => (
-                <div key={c.pays} className="rounded-sm border border-border bg-card p-6">
+                <div
+                  key={c.pays}
+                  className="relative isolate overflow-hidden rounded-sm border border-border bg-card p-6"
+                >
+                  <img
+                    src={FLAGS[c.pays]}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-15"
+                  />
                   <div className="flex items-baseline justify-between gap-3">
                     <h3 className="font-display text-base font-semibold text-foreground">
                       {c.pays}
