@@ -87,10 +87,11 @@ function Hero() {
         <p className="animate-fade-up mt-5 max-w-2xl text-lg text-primary-foreground/85 lg:text-xl">
           L'ingénierie au service des infrastructures durables en Afrique.
         </p>
-        <p className="animate-fade-up mt-4 max-w-2xl text-base leading-relaxed text-primary-foreground/70">
-          Bureau d'études techniques et de supervision de travaux, présent dans six pays d'Afrique
-          centrale et de l'Ouest. Nous accompagnons États, bailleurs et opérateurs sur les projets
-          qui structurent le continent.
+        <p className="animate-fade-up mt-6 max-w-4xl text-xl font-medium leading-relaxed text-primary-foreground/90 sm:text-2xl lg:text-3xl lg:leading-snug">
+          Est un bureau d'études et d'ingénierie pluridisciplinaire, accompagne ses
+          clients-partenaires, entreprises et institutions publiques ou privées, dans
+          l'identification, la conception, la réalisation et le suivi de leurs stratégies et
+          projets.
         </p>
         <div className="animate-fade-up mt-9 flex flex-wrap gap-3">
           <Link
@@ -111,13 +112,40 @@ function Hero() {
   );
 }
 
+function AnimatedValue({ value }: { value: string }) {
+  const match = value.match(/^(\D*)(\d+)(\D*)$/);
+  const [display, setDisplay] = useState(match ? `${match[1]}0${match[3]}` : value);
+
+  useEffect(() => {
+    if (!match) return;
+    const target = Number(match[2]);
+    const duration = 1400;
+    const start = performance.now();
+    let frame = 0;
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const current = p < 1 ? Math.floor(Math.random() * 0.35 * target + eased * target) : target;
+      setDisplay(`${match[1]}${Math.min(current, target)}${match[3]}`);
+      if (p < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+
+  return <>{display}</>;
+}
+
 function Chiffres() {
   return (
     <section className="border-b border-border bg-surface">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-border px-5 lg:grid-cols-4 lg:px-8">
         {CHIFFRES.map((c) => (
           <div key={c.label} className="bg-surface px-4 py-10 text-center">
-            <p className="font-display text-4xl font-bold text-primary lg:text-5xl">{c.valeur}</p>
+            <p className="font-display text-4xl font-bold text-primary lg:text-5xl">
+              <AnimatedValue value={c.valeur} />
+            </p>
             <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">{c.label}</p>
           </div>
         ))}
