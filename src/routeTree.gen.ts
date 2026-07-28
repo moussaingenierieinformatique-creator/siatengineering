@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CarriereRouteImport } from './routes/carriere'
 import { Route as AProposRouteImport } from './routes/a-propos'
@@ -16,6 +17,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SavoirFaireIndexRouteImport } from './routes/savoir-faire/index'
 import { Route as SavoirFaireSlugRouteImport } from './routes/savoir-faire/$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/a-propos': typeof AProposRoute
   '/carriere': typeof CarriereRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
   '/savoir-faire/': typeof SavoirFaireIndexRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/a-propos': typeof AProposRoute
   '/carriere': typeof CarriereRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
   '/savoir-faire': typeof SavoirFaireIndexRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/a-propos': typeof AProposRoute
   '/carriere': typeof CarriereRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
   '/savoir-faire/': typeof SavoirFaireIndexRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/carriere'
     | '/contact'
+    | '/sitemap.xml'
     | '/savoir-faire/$slug'
     | '/savoir-faire/'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/carriere'
     | '/contact'
+    | '/sitemap.xml'
     | '/savoir-faire/$slug'
     | '/savoir-faire'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/carriere'
     | '/contact'
+    | '/sitemap.xml'
     | '/savoir-faire/$slug'
     | '/savoir-faire/'
   fileRoutesById: FileRoutesById
@@ -104,12 +116,20 @@ export interface RootRouteChildren {
   AProposRoute: typeof AProposRoute
   CarriereRoute: typeof CarriereRoute
   ContactRoute: typeof ContactRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SavoirFaireSlugRoute: typeof SavoirFaireSlugRoute
   SavoirFaireIndexRoute: typeof SavoirFaireIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AProposRoute: AProposRoute,
   CarriereRoute: CarriereRoute,
   ContactRoute: ContactRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SavoirFaireSlugRoute: SavoirFaireSlugRoute,
   SavoirFaireIndexRoute: SavoirFaireIndexRoute,
 }
