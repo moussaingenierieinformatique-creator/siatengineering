@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CarriereRouteImport } from './routes/carriere'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SavoirFaireIndexRouteImport } from './routes/savoir-faire/index'
@@ -18,6 +19,11 @@ import { Route as SavoirFaireSlugRouteImport } from './routes/savoir-faire/$slug
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarriereRoute = CarriereRouteImport.update({
+  id: '/carriere',
+  path: '/carriere',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AProposRoute = AProposRouteImport.update({
@@ -44,6 +50,7 @@ const SavoirFaireSlugRoute = SavoirFaireSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/carriere': typeof CarriereRoute
   '/contact': typeof ContactRoute
   '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
   '/savoir-faire/': typeof SavoirFaireIndexRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/carriere': typeof CarriereRoute
   '/contact': typeof ContactRoute
   '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
   '/savoir-faire': typeof SavoirFaireIndexRoute
@@ -59,6 +67,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/carriere': typeof CarriereRoute
   '/contact': typeof ContactRoute
   '/savoir-faire/$slug': typeof SavoirFaireSlugRoute
   '/savoir-faire/': typeof SavoirFaireIndexRoute
@@ -68,15 +77,23 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/a-propos'
+    | '/carriere'
     | '/contact'
     | '/savoir-faire/$slug'
     | '/savoir-faire/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/a-propos' | '/contact' | '/savoir-faire/$slug' | '/savoir-faire'
+  to:
+    | '/'
+    | '/a-propos'
+    | '/carriere'
+    | '/contact'
+    | '/savoir-faire/$slug'
+    | '/savoir-faire'
   id:
     | '__root__'
     | '/'
     | '/a-propos'
+    | '/carriere'
     | '/contact'
     | '/savoir-faire/$slug'
     | '/savoir-faire/'
@@ -85,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
+  CarriereRoute: typeof CarriereRoute
   ContactRoute: typeof ContactRoute
   SavoirFaireSlugRoute: typeof SavoirFaireSlugRoute
   SavoirFaireIndexRoute: typeof SavoirFaireIndexRoute
@@ -97,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carriere': {
+      id: '/carriere'
+      path: '/carriere'
+      fullPath: '/carriere'
+      preLoaderRoute: typeof CarriereRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/a-propos': {
@@ -133,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
+  CarriereRoute: CarriereRoute,
   ContactRoute: ContactRoute,
   SavoirFaireSlugRoute: SavoirFaireSlugRoute,
   SavoirFaireIndexRoute: SavoirFaireIndexRoute,
