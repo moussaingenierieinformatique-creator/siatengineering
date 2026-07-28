@@ -73,7 +73,7 @@ function Hero() {
     <section className="relative isolate overflow-hidden bg-navy-deep">
       <img
         src={hero.url}
-        alt="Chantier d'un pont et d'une route en Afrique centrale supervisé par SIAT-Engineering"
+        alt="Équipes d'ingénieurs SIAT-Engineering en réunion d'études et en supervision de chantier"
         width={1920}
         height={1088}
         className="absolute inset-0 h-full w-full object-cover"
