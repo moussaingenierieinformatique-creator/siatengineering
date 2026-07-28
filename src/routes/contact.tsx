@@ -30,6 +30,15 @@ export const Route = createFileRoute("/contact")({
 const inputClass =
   "w-full rounded-sm border border-input bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-accent";
 
+const FLAGS: Record<string, string> = {
+  Cameroun: "https://flagcdn.com/w1280/cm.png",
+  "République Centrafricaine": "https://flagcdn.com/w1280/cf.png",
+  Tchad: "https://flagcdn.com/w1280/td.png",
+  Niger: "https://flagcdn.com/w1280/ne.png",
+  Mali: "https://flagcdn.com/w1280/ml.png",
+  Nigeria: "https://flagcdn.com/w1280/ng.png",
+};
+
 function Contact() {
   const [sent, setSent] = useState(false);
 
