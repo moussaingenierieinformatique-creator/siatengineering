@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ShieldCheck, Landmark, Globe2, Download, Check } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
-import hero from "@/assets/hero-siat.jpg.asset.json";
+import hero from "@/assets/banniere-siat.jpg.asset.json";
 import { SiteLayout, SectionTitle } from "@/components/site/SiteLayout";
 import { CHIFFRES, COUNTRIES, DOMAINS, PARTNERS, domainCover } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
@@ -133,7 +133,7 @@ function Groupe() {
         <div>
           <SectionTitle eyebrow="Le Groupe" title="Une ingénierie pluridisciplinaire, ancrée en Afrique" />
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-            Basé à Garoua, le Groupe SIAT-Engineering conduit depuis plusieurs années les études
+            Présent dans six pays d'Afrique, le Groupe SIAT-Engineering conduit depuis plusieurs années les études
             techniques et la supervision de projets d'infrastructures dans plus de douze
             disciplines : transport, hydraulique, bâtiment, environnement, électricité, études
             économiques et institutionnelles.
@@ -251,7 +251,7 @@ function Presence() {
       <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-center px-5 lg:px-8">
         <p className="eyebrow">Présence régionale</p>
         <h2 className="mt-4 max-w-2xl text-3xl font-bold text-primary-foreground lg:text-4xl">
-          Depuis notre siège social de Garoua, six implantations au service du continent
+          Six implantations en Afrique centrale et de l'Ouest au service du continent
         </h2>
         <div className="mt-8 flex flex-wrap gap-2">
           {REGIONAL_SLIDES.map((s, i) => (

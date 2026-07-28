@@ -12,7 +12,7 @@ export const Route = createFileRoute("/a-propos")({
       {
         name: "description",
         content:
-          "Le Groupe SIAT-Engineering : société d'ingénierie régionale basée à Garoua, présence dans 6 pays, mot du PDG, valeurs et direction générale.",
+          "Le Groupe SIAT-Engineering : société d'ingénierie régionale implantée dans 6 pays d'Afrique, mot du PDG, valeurs et direction générale.",
       },
       { property: "og:title", content: "À propos — Groupe SIAT-Engineering" },
       {
