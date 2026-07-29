@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { Mail, MapPin, Phone, Send, Check } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Check, Navigation } from "lucide-react";
 import { SiteLayout, PageHero, SectionTitle } from "@/components/site/SiteLayout";
 import { COUNTRIES, SITE } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
@@ -31,12 +31,12 @@ const inputClass =
   "w-full rounded-sm border border-input bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-accent";
 
 const FLAGS: Record<string, string> = {
-  Cameroun: "https://flagcdn.com/w1280/cm.png",
-  "République Centrafricaine": "https://flagcdn.com/w1280/cf.png",
-  Tchad: "https://flagcdn.com/w1280/td.png",
-  Niger: "https://flagcdn.com/w1280/ne.png",
-  Mali: "https://flagcdn.com/w1280/ml.png",
-  Nigeria: "https://flagcdn.com/w1280/ng.png",
+  Cameroun: "https://flagcdn.com/w160/cm.png",
+  "République Centrafricaine": "https://flagcdn.com/w160/cf.png",
+  Tchad: "https://flagcdn.com/w160/td.png",
+  Niger: "https://flagcdn.com/w160/ne.png",
+  Mali: "https://flagcdn.com/w160/ml.png",
+  Nigeria: "https://flagcdn.com/w160/ng.png",
 };
 
 function Contact() {
@@ -119,32 +119,99 @@ function Contact() {
                 <Mail className="h-5 w-5 text-accent" /> {SITE.email}
               </a>
             </div>
-            <div className="mt-8 space-y-5">
+            <div className="mt-8 space-y-6">
               {COUNTRIES.map((c) => (
                 <div
                   key={c.pays}
-                  className="relative isolate overflow-hidden rounded-sm border border-border bg-card p-6"
+                  className="relative overflow-hidden rounded-sm border border-border bg-card p-6"
                 >
-                  <img
-                    src={FLAGS[c.pays]}
-                    alt=""
-                    aria-hidden="true"
-                    loading="lazy"
-                    className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-15"
-                  />
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-base font-semibold text-foreground">
-                      {c.pays}
-                    </h3>
-                    <span className="text-xs uppercase tracking-widest text-accent">{c.statut}</span>
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h3 className="font-display text-base font-semibold text-foreground">
+                        {c.pays}
+                      </h3>
+                      <p className="mt-1 text-xs uppercase tracking-widest text-accent">
+                        {c.statut}
+                      </p>
+                    </div>
+                    <img
+                      src={FLAGS[c.pays]}
+                      alt={`Drapeau ${c.pays}`}
+                      loading="lazy"
+                      width={40}
+                      height={28}
+                      className="h-7 w-10 shrink-0 rounded-[2px] border border-border object-cover"
+                    />
                   </div>
+
                   <p className="mt-3 flex items-start gap-2 text-sm text-muted-foreground">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" /> {c.ville}
                   </p>
-                  <p className="mt-2 flex items-start gap-2 text-sm text-muted-foreground">
-                    <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                    <span>{c.telephones.join(" / ")}</span>
-                  </p>
+
+                  <div className="mt-5 space-y-5 border-t border-border pt-5">
+                    {c.contacts.map((p) => (
+                      <div key={p.nom} className="flex flex-col items-start gap-3 sm:flex-row">
+                        {p.photo ? (
+                          <img
+                            src={p.photo}
+                            alt={p.nom}
+                            loading="lazy"
+                            className="h-20 w-20 shrink-0 rounded-full border border-border object-cover"
+                          />
+                        ) : (
+                          <div
+                            aria-hidden="true"
+                            className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-border bg-surface font-display text-lg font-semibold text-accent"
+                          >
+                            {p.nom
+                              .split(" ")
+                              .slice(0, 2)
+                              .map((w) => w[0])
+                              .join("")}
+                          </div>
+                        )}
+                        <div className="min-w-0">
+                          <p className="font-display text-sm font-semibold text-foreground">
+                            {p.nom}
+                          </p>
+                          {p.poste && (
+                            <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                              {p.poste}
+                            </p>
+                          )}
+                          {p.email && (
+                            <a
+                              href={`mailto:${p.email}`}
+                              className="mt-1.5 flex items-center gap-2 break-all text-sm text-primary hover:text-accent"
+                            >
+                              <Mail className="h-4 w-4 shrink-0 text-accent" /> {p.email}
+                            </a>
+                          )}
+                          <p className="mt-1 flex items-start gap-2 text-sm text-muted-foreground">
+                            <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                            <span>{p.telephones.join(" / ")}</span>
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-5">
+                    <iframe
+                      title={`Carte du bureau de ${c.ville}`}
+                      src={`https://maps.google.com/maps?q=${encodeURIComponent(c.mapQuery)}&z=12&output=embed`}
+                      loading="lazy"
+                      className="h-44 w-full rounded-sm border border-border"
+                    />
+                    <a
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.mapQuery)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-2 rounded-sm border border-accent px-4 py-2 font-display text-xs font-semibold uppercase tracking-widest text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
+                    >
+                      <Navigation className="h-4 w-4" /> Itinéraire
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
