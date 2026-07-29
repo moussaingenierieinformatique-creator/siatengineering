@@ -125,7 +125,7 @@ function Contact() {
                   key={c.pays}
                   className="relative overflow-hidden rounded-sm border border-border bg-card p-6"
                 >
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-stretch justify-between gap-4">
                     <div>
                       <h3 className="font-display text-base font-semibold text-foreground">
                         {c.pays}
@@ -138,9 +138,7 @@ function Contact() {
                       src={FLAGS[c.pays]}
                       alt={`Drapeau ${c.pays}`}
                       loading="lazy"
-                      width={40}
-                      height={28}
-                      className="h-7 w-10 shrink-0 rounded-[2px] border border-border object-cover"
+                      className="w-32 shrink-0 self-stretch rounded-sm border border-border object-cover"
                     />
                   </div>
 
