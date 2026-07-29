@@ -155,17 +155,15 @@ function Groupe() {
     <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
       <div className="grid items-center gap-14 lg:grid-cols-2">
         <div>
-          <SectionTitle eyebrow="Le Groupe" title="Une ingénierie pluridisciplinaire, ancrée en Afrique" />
+          <SectionTitle title="Ressources techniques d'appui" />
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-            Présent dans six pays d'Afrique, le Groupe SIAT-Engineering conduit depuis plusieurs années les études
-            techniques et la supervision de projets d'infrastructures dans plus de douze
-            disciplines : transport, hydraulique, bâtiment, environnement, électricité, études
-            économiques et institutionnelles.
+            L'intervention de Groupe SIAT-Engineering s'étend sur tout le cycle d'un projet, des
+            études d'identification, de diagnostic ou de faisabilité, jusqu'à la supervision des
+            travaux.
           </p>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Nos équipes pluridisciplinaires interviennent pour le compte d'États, d'agences
-            d'exécution, de bailleurs internationaux et d'opérateurs privés, en assurant un niveau
-            technique conforme aux standards internationaux.
+            Ses équipes d'ingénieurs et de techniciens pluridisciplinaires sont en mesure d'assurer
+            un service optimal à chacune des composantes d'un projet.
           </p>
           <Link
             to="/a-propos"
@@ -175,31 +173,22 @@ function Groupe() {
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <img
-            src={photo("img_p7_2")}
-            alt="Équipe SIAT-Engineering en réunion d'études techniques"
-            loading="lazy"
-            className="h-56 w-full rounded-sm object-cover shadow-[var(--shadow-card)]"
-          />
-          <img
-            src={photo("img_p8_8")}
-            alt="Ingénieurs SIAT-Engineering réalisant des levés topographiques"
-            loading="lazy"
-            className="mt-8 h-56 w-full rounded-sm object-cover shadow-[var(--shadow-card)]"
-          />
-          <img
-            src={photo("img_p9_1")}
-            alt="Supervision d'un ouvrage de franchissement"
-            loading="lazy"
-            className="h-56 w-full rounded-sm object-cover shadow-[var(--shadow-card)]"
-          />
-          <img
-            src={photo("img_p11_2")}
-            alt="Infrastructure d'eau potable en milieu urbain"
-            loading="lazy"
-            className="mt-8 h-56 w-full rounded-sm object-cover shadow-[var(--shadow-card)]"
-          />
+          {[
+            { src: photo("img_p7_2"), alt: "Équipe SIAT-Engineering en réunion d'études techniques" },
+            { src: photo("img_p8_8"), alt: "Ingénieurs SIAT-Engineering réalisant des levés topographiques" },
+            { src: photo("img_p9_1"), alt: "Supervision d'un ouvrage de franchissement" },
+            { src: photo("img_p11_2"), alt: "Infrastructure d'eau potable en milieu urbain" },
+          ].map((img) => (
+            <img
+              key={img.src}
+              src={img.src}
+              alt={img.alt}
+              loading="lazy"
+              className="aspect-[4/3] h-full w-full rounded-sm object-cover shadow-[var(--shadow-card)]"
+            />
+          ))}
         </div>
+
       </div>
     </section>
   );

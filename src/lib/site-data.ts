@@ -7,6 +7,14 @@ export const SITE = {
   hq: "Garoua, Cameroun",
 };
 
+export type Contact = {
+  nom: string;
+  poste?: string;
+  email?: string;
+  telephones: string[];
+  photo?: string;
+};
+
 export type Country = {
   pays: string;
   statut: string;
@@ -14,6 +22,8 @@ export type Country = {
   telephones: string[];
   directeur?: string;
   emailDirection?: string;
+  mapQuery: string;
+  contacts: Contact[];
 };
 
 export const COUNTRIES: Country[] = [
@@ -21,51 +31,111 @@ export const COUNTRIES: Country[] = [
     pays: "Cameroun",
     statut: "Siège social",
     ville: "Garoua",
-    telephones: ["(00237) 691 30 30 91", "(00237) 691 83 50 89", "(00237) 654 08 66 66"],
-    directeur: "Abdoulaye Hamadou",
-    emailDirection: "direction.cameroun@siatengineering.com",
+    mapQuery: "Garoua, Cameroun",
+    telephones: ["(00237) 691 83 50 89", "(00237) 675 49 39 89", "(00237) 695 11 43 90"],
+    directeur: "Ntock Patrick",
+    emailDirection: "patrick.ntock@siat-engineering.com",
+    contacts: [
+      {
+        nom: "Ntock Patrick",
+        poste: "Directeur",
+        email: "patrick.ntock@siat-engineering.com",
+        telephones: ["(00237) 691 83 50 89", "(00237) 675 49 39 89"],
+      },
+      {
+        nom: "Aboubakar Souaibou",
+        poste: "D.A.F.",
+        telephones: ["(+237) 695 11 43 90", "(+237) 675 17 06 32"],
+      },
+    ],
   },
   {
     pays: "République Centrafricaine",
     statut: "Représentation",
     ville: "Bangui",
+    mapQuery: "Bangui, République Centrafricaine",
     telephones: ["(00236) 74 57 00 17", "(00236) 70 02 22 66"],
-    directeur: "Jean-Paul Ngaïssona",
-    emailDirection: "direction.rca@siatengineering.com",
+    directeur: "Oumar Touré",
+    emailDirection: "oumar.toure@siat-engineering.com",
+    contacts: [
+      {
+        nom: "Oumar Touré",
+        poste: "Représentant pays",
+        email: "oumar.toure@siat-engineering.com",
+        telephones: ["(00236) 74 57 00 17", "(00236) 70 02 22 66"],
+      },
+    ],
   },
   {
     pays: "Tchad",
     statut: "Représentation",
     ville: "N'Djaména",
+    mapQuery: "N'Djamena, Tchad",
     telephones: ["(00235) 66 38 81 59", "(00235) 90 27 21 20"],
-    directeur: "Moussa Abakar",
-    emailDirection: "direction.tchad@siatengineering.com",
+    directeur: "Souleyman Haroun",
+    emailDirection: "souleyman.haroun@siat-engineering.com",
+    contacts: [
+      {
+        nom: "Souleyman Haroun",
+        poste: "Représentant pays",
+        email: "souleyman.haroun@siat-engineering.com",
+        telephones: ["(00235) 66 38 81 59", "(00235) 90 27 21 20"],
+      },
+    ],
   },
   {
     pays: "Niger",
     statut: "Représentation",
     ville: "Niamey",
-    telephones: ["(00227) 96 14 77 14", "(00227) 93 48 21 21"],
-    directeur: "Ibrahim Moussa Saley",
-    emailDirection: "direction.niger@siatengineering.com",
+    mapQuery: "Niamey, Niger",
+    telephones: ["(00227) 96 14 77 14", "(00227) 93 48 21 20"],
+    directeur: "Mahaman Ismailou Abdou",
+    emailDirection: "mahaman.abdou@siat-engineering.com",
+    contacts: [
+      {
+        nom: "Mahaman Ismailou Abdou",
+        poste: "Représentant pays",
+        email: "mahaman.abdou@siat-engineering.com",
+        telephones: ["(00227) 96 14 77 14", "(00227) 93 48 21 20"],
+      },
+    ],
   },
   {
     pays: "Mali",
     statut: "Représentation",
     ville: "Bamako",
+    mapQuery: "Bamako, Mali",
     telephones: ["(00223) 70 44 79 80"],
-    directeur: "Oumar Traoré",
-    emailDirection: "direction.mali@siatengineering.com",
+    directeur: "Yaya Issa Faradjallah",
+    emailDirection: "yaya.faradjallah@siat-engineering.com",
+    contacts: [
+      {
+        nom: "Yaya Issa Faradjallah",
+        poste: "Représentant pays",
+        email: "yaya.faradjallah@siat-engineering.com",
+        telephones: ["(00223) 70 44 79 80"],
+      },
+    ],
   },
   {
     pays: "Nigeria",
     statut: "Représentation",
     ville: "Abuja",
-    telephones: ["(00234) 080 878 380 06"],
-    directeur: "Chukwuemeka Okafor",
-    emailDirection: "direction.nigeria@siatengineering.com",
+    mapQuery: "Abuja, Nigeria",
+    telephones: ["(00234) 080 878 380 06", "(00234) 706 716 2161"],
+    directeur: "Abdoul Bagui Bindoh",
+    emailDirection: "abdoul.bindoh@siat-engineering.com",
+    contacts: [
+      {
+        nom: "Abdoul Bagui Bindoh",
+        poste: "Représentant pays",
+        email: "abdoul.bindoh@siat-engineering.com",
+        telephones: ["(00234) 080 878 380 06", "(00234) 706 716 2161"],
+      },
+    ],
   },
 ];
+
 
 export type Domain = {
   slug: string;
