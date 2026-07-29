@@ -1,4 +1,6 @@
 import { photo } from "./photos";
+import ntockPhoto from "@/assets/ntock-patrick.jpg.asset.json";
+import aboubakarPhoto from "@/assets/aboubakar-souaibou.jpg.asset.json";
 
 export const SITE = {
   name: "Groupe SIAT-Engineering",
@@ -41,11 +43,13 @@ export const COUNTRIES: Country[] = [
         poste: "Directeur",
         email: "patrick.ntock@siat-engineering.com",
         telephones: ["(00237) 691 83 50 89", "(00237) 675 49 39 89"],
+        photo: ntockPhoto.url,
       },
       {
         nom: "Aboubakar Souaibou",
         poste: "D.A.F.",
         telephones: ["(+237) 695 11 43 90", "(+237) 675 17 06 32"],
+        photo: aboubakarPhoto.url,
       },
     ],
   },

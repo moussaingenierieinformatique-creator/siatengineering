@@ -156,12 +156,12 @@ function Groupe() {
       <div className="grid items-center gap-14 lg:grid-cols-2">
         <div>
           <SectionTitle title="Ressources techniques d'appui" />
-          <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+          <p className="mt-6 text-base leading-relaxed text-foreground">
             L'intervention de Groupe SIAT-Engineering s'étend sur tout le cycle d'un projet, des
             études d'identification, de diagnostic ou de faisabilité, jusqu'à la supervision des
             travaux.
           </p>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-base leading-relaxed text-foreground">
             Ses équipes d'ingénieurs et de techniciens pluridisciplinaires sont en mesure d'assurer
             un service optimal à chacune des composantes d'un projet.
           </p>
