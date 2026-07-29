@@ -78,22 +78,18 @@ function Hero() {
         height={1088}
         className="block h-auto w-full object-contain"
       />
-      <div className="relative mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
-
-        <p className="eyebrow animate-fade-up">Bureau d'études & supervision de travaux</p>
-        <h1 className="animate-fade-up mt-5 max-w-3xl text-4xl font-bold leading-[1.05] text-primary-foreground sm:text-5xl lg:text-6xl">
-          Groupe SIAT-Engineering
-        </h1>
-        <p className="animate-fade-up mt-5 max-w-2xl text-lg text-primary-foreground/85 lg:text-xl">
-          L'ingénierie au service des infrastructures durables en Afrique.
+      <div className="relative mx-auto max-w-7xl px-5 py-14 lg:px-8 lg:py-20">
+        <div className="border-b border-primary-foreground/15 pb-10 text-center">
+          <h1 className="animate-fade-up text-4xl font-bold leading-[1.05] text-primary-foreground sm:text-5xl lg:text-6xl">
+            Groupe SIAT-Engineering
+          </h1>
+        </div>
+        <p className="animate-fade-up mt-10 w-full text-center text-lg font-medium uppercase leading-relaxed tracking-wide text-primary-foreground/90 sm:text-xl lg:text-2xl lg:leading-snug">
+          Bureau d'études d'ingénierie pluridisciplinaire, accompagne ses clients-partenaires,
+          entreprises et institutions publiques ou privées, dans l'identification, la conception, la
+          réalisation et le suivi de leurs stratégies et projets
         </p>
-        <p className="animate-fade-up mt-6 max-w-4xl text-xl font-medium leading-relaxed text-primary-foreground/90 sm:text-2xl lg:text-3xl lg:leading-snug">
-          Est un bureau d'études et d'ingénierie pluridisciplinaire, accompagne ses
-          clients-partenaires, entreprises et institutions publiques ou privées, dans
-          l'identification, la conception, la réalisation et le suivi de leurs stratégies et
-          projets.
-        </p>
-        <div className="animate-fade-up mt-9 flex flex-wrap gap-3">
+        <div className="animate-fade-up mt-9 flex flex-wrap justify-center gap-3">
           <Link
             to="/savoir-faire"
             className="inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90"

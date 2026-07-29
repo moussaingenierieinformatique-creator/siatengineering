@@ -70,8 +70,8 @@ function APropos() {
             </div>
           </div>
           <img
-            src={photo("img_p7_3")}
-            alt="Ingénieurs SIAT-Engineering analysant des plans en bureau d'études"
+            src={photo("img_p7_2")}
+            alt="Réunion d'équipe pluridisciplinaire du Groupe SIAT-Engineering autour des plans"
             loading="lazy"
             className="h-full min-h-72 w-full rounded-sm object-cover shadow-[var(--shadow-card)]"
           />
