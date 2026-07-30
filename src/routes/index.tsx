@@ -155,7 +155,7 @@ function Groupe() {
     <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
       <div className="grid items-center gap-14 lg:grid-cols-2">
         <div>
-          <SectionTitle title="Ressources techniques d'appui" />
+          <SectionTitle title="Ressources techniques" />
           <p className="text-block mt-6 text-base leading-relaxed text-foreground">
             L'intervention de Groupe SIAT-Engineering s'étend sur tout le cycle d'un projet, des
             études d'identification, de diagnostic ou de faisabilité, jusqu'à la supervision des
