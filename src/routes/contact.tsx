@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { Mail, MapPin, Phone, Send, Check, Navigation, ChevronDown } from "lucide-react";
 import { SiteLayout, PageHero, SectionTitle } from "@/components/site/SiteLayout";
+import { AfricaPresenceMap } from "@/components/site/AfricaPresenceMap";
 import { COUNTRIES, SITE } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
 
@@ -41,6 +42,7 @@ const FLAGS: Record<string, string> = {
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [showMap, setShowMap] = useState(false);
 
   function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
