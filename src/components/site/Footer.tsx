@@ -15,7 +15,7 @@ export function Footer() {
               width={320}
               height={200}
               loading="lazy"
-              className="h-24 w-auto opacity-95 mix-blend-screen [filter:brightness(1.15)_contrast(1.05)]"
+              className="h-24 w-auto mix-blend-screen [filter:invert(1)_hue-rotate(180deg)_saturate(1.25)_brightness(1.05)]"
             />
             <p className="text-block mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
               {SITE.baseline} Bureau d'études techniques et de supervision de travaux, présent dans
