@@ -123,92 +123,96 @@ function Contact() {
               {COUNTRIES.map((c) => (
                 <div
                   key={c.pays}
-                  className="relative overflow-hidden rounded-sm border border-border bg-card p-6"
+                  className="group relative overflow-hidden rounded-sm border border-border bg-card"
                 >
-                  <div className="flex items-stretch justify-between gap-4">
-                    <div>
-                      <h3 className="font-display text-base font-semibold text-foreground">
-                        {c.pays}
-                      </h3>
-                      <p className="mt-1 text-xs uppercase tracking-widest text-accent">
-                        {c.statut}
-                      </p>
-                    </div>
+                  <div className="relative h-28 overflow-hidden bg-surface">
                     <img
                       src={FLAGS[c.pays]}
                       alt={`Drapeau ${c.pays}`}
                       loading="lazy"
-                      className="w-32 shrink-0 self-stretch rounded-sm border border-border object-cover"
+                      className="animate-flag-wave h-full w-full object-cover"
                     />
+                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-navy-deep/85 to-transparent p-4">
+                      <h3 className="font-display text-lg font-bold text-primary-foreground">
+                        {c.pays}
+                      </h3>
+                      <p className="text-xs uppercase tracking-widest text-primary-foreground/85">
+                        {c.statut} — {c.ville}
+                      </p>
+                    </div>
                   </div>
 
-                  <p className="mt-3 flex items-start gap-2 text-sm text-muted-foreground">
-                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" /> {c.ville}
-                  </p>
-
-                  <div className="mt-5 space-y-5 border-t border-border pt-5">
+                  <div className="p-6">
                     {c.contacts.map((p) => (
-                      <div key={p.nom} className="flex flex-col items-start gap-3 sm:flex-row">
-                        {p.photo ? (
-                          <img
-                            src={p.photo}
-                            alt={p.nom}
-                            loading="lazy"
-                            className="h-20 w-20 shrink-0 rounded-full border border-border object-cover"
-                          />
-                        ) : (
-                          <div
-                            aria-hidden="true"
-                            className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-border bg-surface font-display text-lg font-semibold text-accent"
-                          >
-                            {p.nom
-                              .split(" ")
-                              .slice(0, 2)
-                              .map((w) => w[0])
-                              .join("")}
-                          </div>
-                        )}
-                        <div className="min-w-0">
-                          <p className="font-display text-sm font-semibold text-foreground">
-                            {p.nom}
-                          </p>
-                          {p.poste && (
-                            <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                              {p.poste}
-                            </p>
-                          )}
-                          {p.email && (
-                            <a
-                              href={`mailto:${p.email}`}
-                              className="mt-1.5 flex items-center gap-2 break-all text-sm text-primary hover:text-accent"
+                      <div key={p.nom} className="mt-6 first:mt-0">
+                        <div className="relative overflow-hidden rounded-sm">
+                          {p.photo ? (
+                            <img
+                              src={p.photo}
+                              alt={p.nom}
+                              loading="lazy"
+                              className="h-64 w-full object-cover"
+                            />
+                          ) : (
+                            <div
+                              aria-hidden="true"
+                              className="flex h-64 w-full items-center justify-center bg-surface font-display text-5xl font-bold text-accent"
                             >
-                              <Mail className="h-4 w-4 shrink-0 text-accent" /> {p.email}
-                            </a>
+                              {p.nom
+                                .split(" ")
+                                .slice(0, 2)
+                                .map((w) => w[0])
+                                .join("")}
+                            </div>
                           )}
-                          <p className="mt-1 flex items-start gap-2 text-sm text-muted-foreground">
-                            <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                            <span>{p.telephones.join(" / ")}</span>
-                          </p>
+                          <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-navy-deep/85 px-4 py-3">
+                            <p className="font-display text-sm font-semibold text-primary-foreground">
+                              {p.nom}
+                            </p>
+                            <ChevronDown className="h-5 w-5 shrink-0 text-accent transition-transform duration-300 group-hover:rotate-180" />
+                          </div>
+                          <div className="pointer-events-none absolute inset-0 flex flex-col justify-center gap-1.5 bg-navy-deep/92 p-5 opacity-0 transition-opacity duration-300 group-hover:pointer-events-auto group-hover:opacity-100">
+                            {p.poste && (
+                              <p className="text-xs uppercase tracking-widest text-accent">
+                                {p.poste}
+                              </p>
+                            )}
+                            {p.email && (
+                              <a
+                                href={`mailto:${p.email}`}
+                                className="flex items-center gap-2 break-all text-sm text-primary-foreground hover:text-accent"
+                              >
+                                <Mail className="h-4 w-4 shrink-0 text-accent" /> {p.email}
+                              </a>
+                            )}
+                            <p className="flex items-start gap-2 text-sm text-primary-foreground/85">
+                              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                              <span>{p.telephones.join(" / ")}</span>
+                            </p>
+                            <p className="flex items-start gap-2 text-sm text-primary-foreground/85">
+                              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" /> {c.ville}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     ))}
-                  </div>
 
-                  <div className="mt-5">
-                    <iframe
-                      title={`Carte du bureau de ${c.ville}`}
-                      src={`https://maps.google.com/maps?q=${encodeURIComponent(c.mapQuery)}&z=12&output=embed`}
-                      loading="lazy"
-                      className="h-44 w-full rounded-sm border border-border"
-                    />
-                    <a
-                      href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.mapQuery)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-2 rounded-sm border border-accent px-4 py-2 font-display text-xs font-semibold uppercase tracking-widest text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
-                    >
-                      <Navigation className="h-4 w-4" /> Itinéraire
-                    </a>
+                    <div className="mt-5">
+                      <iframe
+                        title={`Carte du bureau de ${c.ville}`}
+                        src={`https://maps.google.com/maps?q=${encodeURIComponent(c.mapQuery)}&z=12&output=embed`}
+                        loading="lazy"
+                        className="h-44 w-full rounded-sm border border-border"
+                      />
+                      <a
+                        href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.mapQuery)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex items-center gap-2 rounded-sm border border-accent px-4 py-2 font-display text-xs font-semibold uppercase tracking-widest text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
+                      >
+                        <Navigation className="h-4 w-4" /> Itinéraire
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
