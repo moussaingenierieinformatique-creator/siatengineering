@@ -3,7 +3,7 @@ import { ArrowRight, ShieldCheck, Landmark, Globe2, Download, Check } from "luci
 import { useEffect, useState, type FormEvent } from "react";
 import hero from "@/assets/banniere-siat.jpg.asset.json";
 import { SiteLayout, SectionTitle } from "@/components/site/SiteLayout";
-import { CHIFFRES, COUNTRIES, DOMAINS, PARTNERS, domainCover } from "@/lib/site-data";
+import { CHIFFRES, COUNTRIES, DOMAINS, PARTNERS, domainCover, partnerLogo } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
 
 export const Route = createFileRoute("/")({
@@ -156,12 +156,12 @@ function Groupe() {
       <div className="grid items-center gap-14 lg:grid-cols-2">
         <div>
           <SectionTitle title="Ressources techniques d'appui" />
-          <p className="mt-6 text-base leading-relaxed text-foreground">
+          <p className="text-block mt-6 text-base leading-relaxed text-foreground">
             L'intervention de Groupe SIAT-Engineering s'étend sur tout le cycle d'un projet, des
             études d'identification, de diagnostic ou de faisabilité, jusqu'à la supervision des
             travaux.
           </p>
-          <p className="mt-4 text-base leading-relaxed text-foreground">
+          <p className="text-block mt-4 text-base leading-relaxed text-foreground">
             Ses équipes d'ingénieurs et de techniciens pluridisciplinaires sont en mesure d'assurer
             un service optimal à chacune des composantes d'un projet.
           </p>
@@ -201,7 +201,7 @@ function Domaines() {
         <SectionTitle
           eyebrow="Nos savoir-faire"
           title="12 domaines d'expertise"
-          intro="De l'étude préalable à la réception des ouvrages, nos équipes couvrent l'intégralité du cycle de projet."
+          intro="L'expertise de Groupe SIAT-Engineering couvre la création, la conception, la modernisation des infrastructures modernes. Ils se développent sur la base des méthodes de calcul spécifiques et des règlements les plus récents, en tenant compte des techniques d'exécution les plus appropriées."
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {DOMAINS.map((d) => (
@@ -226,7 +226,7 @@ function Domaines() {
                 <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-accent">
                   {d.titre}
                 </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                <p className="text-block mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {d.accroche}
                 </p>
                 <span className="mt-5 inline-flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-widest text-accent">
@@ -354,8 +354,8 @@ function Reassurance() {
         {REASSURANCE.map((r) => (
           <div key={r.titre} className="rule-accent bg-surface p-8">
             <r.icon className="h-7 w-7 text-accent" />
-            <h3 className="mt-5 font-display text-lg font-semibold text-foreground">{r.titre}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.texte}</p>
+            <h3 className="section-heading mt-5 text-lg">{r.titre}</h3>
+            <p className="text-block mt-3 text-sm leading-relaxed text-muted-foreground">{r.texte}</p>
           </div>
         ))}
       </div>
@@ -378,10 +378,8 @@ function Ressources() {
     <section className="bg-surface py-20">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-2 lg:px-8">
         <div className="rule-accent">
-          <h3 className="font-display text-2xl font-bold text-foreground">
-            Présentation institutionnelle
-          </h3>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          <h3 className="section-heading text-2xl">Présentation institutionnelle</h3>
+          <p className="text-block mt-3 text-sm leading-relaxed text-muted-foreground">
             Téléchargez le document de présentation du Groupe SIAT-Engineering : références,
             organisation et domaines d'intervention.
           </p>
@@ -393,8 +391,8 @@ function Ressources() {
           </a>
         </div>
         <div className="rule-accent">
-          <h3 className="font-display text-2xl font-bold text-foreground">Newsletter</h3>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          <h3 className="section-heading text-2xl">Newsletter</h3>
+          <p className="text-block mt-3 text-sm leading-relaxed text-muted-foreground">
             Recevez nos actualités projets et appels à candidatures.
           </p>
           <form onSubmit={submit} className="mt-6 flex flex-col gap-3 sm:flex-row">
