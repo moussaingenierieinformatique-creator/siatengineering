@@ -298,15 +298,28 @@ function Partenaires() {
         Ils nous font confiance
       </p>
       <div className="mt-8 overflow-hidden">
-        <div className="animate-marquee flex w-max gap-4">
-          {list.map((p, i) => (
-            <span
-              key={`${p}-${i}`}
-              className="whitespace-nowrap rounded-sm border border-border bg-surface px-6 py-3.5 font-display text-sm font-medium text-primary/80"
-            >
-              {p}
-            </span>
-          ))}
+        <div className="animate-marquee flex w-max items-stretch gap-4">
+          {list.map((p, i) => {
+            const logo = partnerLogo(p);
+            return (
+              <span
+                key={`${p.nom}-${i}`}
+                className="flex min-w-[13rem] items-center gap-3 whitespace-nowrap rounded-sm border border-border bg-surface px-5 py-3.5"
+              >
+                {logo && (
+                  <img
+                    src={logo}
+                    alt={`Logo ${p.nom}`}
+                    loading="lazy"
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 shrink-0 rounded-sm bg-background object-contain p-1"
+                  />
+                )}
+                <span className="font-display text-sm font-medium text-primary/80">{p.nom}</span>
+              </span>
+            );
+          })}
         </div>
       </div>
     </section>
