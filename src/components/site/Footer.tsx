@@ -9,17 +9,15 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr_1.4fr]">
           <div>
-            <div className="inline-flex rounded-sm bg-primary-foreground p-3">
-              <img
-                src={logo.url}
-                alt="Logo Groupe SIAT-Engineering"
-                width={200}
-                height={125}
-                loading="lazy"
-                className="h-12 w-auto"
-              />
-            </div>
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
+            <img
+              src={logo.url}
+              alt="Logo Groupe SIAT-Engineering"
+              width={320}
+              height={200}
+              loading="lazy"
+              className="h-24 w-auto mix-blend-screen [filter:invert(1)_hue-rotate(180deg)_saturate(1.25)_brightness(1.05)]"
+            />
+            <p className="text-block mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
               {SITE.baseline} Bureau d'études techniques et de supervision de travaux, présent dans
               six pays d'Afrique centrale et de l'Ouest.
             </p>

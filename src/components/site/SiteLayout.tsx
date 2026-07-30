@@ -76,14 +76,10 @@ export function SectionTitle({
   return (
     <div className="max-w-3xl">
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h2
-        className={`mt-3 text-3xl font-bold lg:text-4xl ${light ? "text-primary-foreground" : "text-foreground"}`}
-      >
-        {title}
-      </h2>
+      <h2 className="section-heading mt-3 text-3xl lg:text-4xl">{title}</h2>
       {intro && (
         <p
-          className={`mt-4 text-base leading-relaxed ${light ? "text-primary-foreground/75" : "text-muted-foreground"}`}
+          className={`text-block mt-5 text-base leading-relaxed ${light ? "text-primary-foreground/80" : "text-foreground"}`}
         >
           {intro}
         </p>

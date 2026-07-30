@@ -499,19 +499,24 @@ export function getDomain(slug: string): Domain | undefined {
   return DOMAINS.find((d) => d.slug === slug);
 }
 
-export const PARTNERS = [
-  "Banque Africaine de Développement (BAD)",
-  "Banque Mondiale",
-  "Agence Française de Développement (AFD)",
-  "PNUD",
-  "Banque Islamique de Développement (BID)",
-  "Union Européenne",
-  "Eau Vive International",
-  "Commission du Bassin du Lac Tchad (CBLT)",
-  "Bureau Veritas Certification",
-  "CEMAC / CEEAC",
-  "ONG partenaires locales",
+export type Partner = { nom: string; domaine?: string };
+
+export const PARTNERS: Partner[] = [
+  { nom: "Banque Africaine de Développement (BAD)", domaine: "afdb.org" },
+  { nom: "Banque Mondiale", domaine: "worldbank.org" },
+  { nom: "Agence Française de Développement (AFD)", domaine: "afd.fr" },
+  { nom: "PNUD", domaine: "undp.org" },
+  { nom: "Banque Islamique de Développement (BID)", domaine: "isdb.org" },
+  { nom: "Union Européenne", domaine: "european-union.europa.eu" },
+  { nom: "Eau Vive International", domaine: "eau-vive.org" },
+  { nom: "Commission du Bassin du Lac Tchad (CBLT)", domaine: "cblt.org" },
+  { nom: "Bureau Veritas Certification", domaine: "bureauveritas.com" },
+  { nom: "CEMAC", domaine: "cemac.int" },
+  { nom: "CEEAC", domaine: "ceeac-eccas.org" },
 ];
+
+export const partnerLogo = (p: Partner) =>
+  p.domaine ? `https://www.google.com/s2/favicons?domain=${p.domaine}&sz=128` : undefined;
 
 export const VALEURS = [
   "Déployer une démarche professionnelle axée sur l'excellence, fondée sur la transparence et la confiance.",
