@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Études techniques et supervision de travaux pour États, bailleurs et opérateurs, dans six pays d'Afrique centrale et de l'Ouest.",
+          "Études techniques et supervision de travaux pour États, bailleurs et opérateurs, dans sept pays d'Afrique centrale et de l'Ouest.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -50,6 +50,7 @@ const REGIONAL_SLIDES = [
   { pays: "Mali", ville: "Bamako", image: photo("img_p12_2") },
   { pays: "Niger", ville: "Niamey", image: photo("img_p13_6") },
   { pays: "Nigeria", ville: "Abuja", image: photo("img_p10_2") },
+  { pays: "Mauritanie", ville: "Nouakchott", image: photo("img_p11_2") },
 ];
 
 function Accueil() {
@@ -264,7 +265,7 @@ function Presence() {
       <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-center px-5 lg:px-8">
         <p className="eyebrow">Présence régionale</p>
         <h2 className="mt-4 max-w-2xl text-3xl font-bold text-primary-foreground lg:text-4xl">
-          Six implantations en Afrique centrale et de l'Ouest au service du continent
+          Sept implantations en Afrique centrale et de l'Ouest au service du continent
         </h2>
         <div className="mt-8 flex flex-wrap gap-2">
           {REGIONAL_SLIDES.map((s, i) => (
@@ -293,31 +294,31 @@ function Presence() {
 function Partenaires() {
   const list = [...PARTNERS, ...PARTNERS];
   return (
-    <section className="border-y border-border bg-background py-14">
-      <p className="mx-auto max-w-7xl px-5 text-center text-xs uppercase tracking-[0.22em] text-muted-foreground lg:px-8">
+    <section className="border-y border-border bg-background py-16">
+      <h2 className="section-heading mx-auto max-w-7xl px-5 text-center text-3xl lg:px-8 lg:text-4xl">
         Ils nous font confiance
-      </p>
-      <div className="mt-8 overflow-hidden">
-        <div className="animate-marquee flex w-max items-stretch gap-4">
+      </h2>
+      <div className="mt-10 overflow-hidden">
+        <div className="animate-marquee flex w-max items-stretch gap-6">
           {list.map((p, i) => {
             const logo = partnerLogo(p);
             return (
               <span
                 key={`${p.nom}-${i}`}
-                className="flex min-w-[13rem] items-center gap-3 whitespace-nowrap rounded-sm border border-border bg-surface px-5 py-3.5"
+                className="flex min-w-[17rem] items-center gap-4 whitespace-nowrap rounded-sm border border-border bg-surface px-6 py-5"
               >
                 {logo && (
                   <img
                     src={logo}
                     alt={`Logo ${p.nom}`}
                     loading="lazy"
-                    width={56}
-                    height={48}
-                    className="h-12 w-14 shrink-0 rounded-sm bg-background object-contain p-1"
+                    width={88}
+                    height={80}
+                    className="h-20 w-22 shrink-0 rounded-sm bg-background object-contain p-1"
                   />
 
                 )}
-                <span className="font-display text-sm font-medium text-primary/80">{p.nom}</span>
+                <span className="font-display text-base font-semibold text-primary">{p.nom}</span>
               </span>
             );
           })}
@@ -354,7 +355,7 @@ function Reassurance() {
       <div className="grid gap-6 lg:grid-cols-3">
         {REASSURANCE.map((r) => (
           <div key={r.titre} className="rule-accent bg-surface p-8">
-            <r.icon className="h-7 w-7 text-accent" />
+            <r.icon className="h-7 w-7 text-primary" />
             <h3 className="section-heading mt-5 text-lg">{r.titre}</h3>
             <p className="text-block mt-3 text-sm leading-relaxed text-muted-foreground">{r.texte}</p>
           </div>

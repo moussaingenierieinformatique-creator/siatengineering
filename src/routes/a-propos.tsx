@@ -82,7 +82,7 @@ function APropos() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionTitle
             eyebrow="2.2 Notre présence régionale"
-            title="Six implantations, un seul standard technique"
+            title="Sept implantations, un seul standard technique"
           />
           <div className="mt-10 overflow-x-auto rounded-sm border border-border bg-card">
             <table className="w-full min-w-[42rem] text-left text-sm">

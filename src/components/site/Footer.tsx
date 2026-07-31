@@ -19,7 +19,7 @@ export function Footer() {
             />
             <p className="text-block mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
               {SITE.baseline} Bureau d'études techniques et de supervision de travaux, présent dans
-              six pays d'Afrique centrale et de l'Ouest.
+              sept pays d'Afrique centrale et de l'Ouest.
             </p>
             <div className="mt-5 flex gap-3">
               <a

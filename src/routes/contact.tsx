@@ -14,12 +14,12 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Contactez le Groupe SIAT-Engineering : formulaire, coordonnées de nos six implantations au Cameroun, RCA, Tchad, Niger, Mali et Nigeria. Réponse sous 48 heures.",
+          "Contactez le Groupe SIAT-Engineering : formulaire, coordonnées de nos sept implantations au Cameroun, RCA, Tchad, Niger, Mali, Nigeria et Mauritanie. Réponse sous 48 heures.",
       },
       { property: "og:title", content: "Contact — Groupe SIAT-Engineering" },
       {
         property: "og:description",
-        content: "Six implantations en Afrique à votre écoute. Réponse sous 48 heures.",
+        content: "Sept implantations en Afrique à votre écoute. Réponse sous 48 heures.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/contact" },
@@ -38,6 +38,7 @@ const FLAGS: Record<string, string> = {
   Niger: "https://flagcdn.com/w160/ne.png",
   Mali: "https://flagcdn.com/w160/ml.png",
   Nigeria: "https://flagcdn.com/w160/ng.png",
+  Mauritanie: "https://flagcdn.com/w160/mr.png",
 };
 
 function Contact() {
@@ -55,7 +56,7 @@ function Contact() {
       <PageHero
         eyebrow="Contact"
         title="Parlons de votre projet"
-        intro="Nos équipes vous répondent sous 48 heures depuis l'une de nos six implantations."
+        intro="Nos équipes vous répondent sous 48 heures depuis l'une de nos sept implantations."
         images={[
           photo("img_p7_1"),
           photo("img_p9_2"),

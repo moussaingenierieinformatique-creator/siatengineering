@@ -1,6 +1,11 @@
 import { photo } from "./photos";
 import ntockPhoto from "@/assets/ntock-patrick.jpg.asset.json";
 import aboubakarPhoto from "@/assets/aboubakar-souaibou.jpg.asset.json";
+import dgNiger from "@/assets/dg-niger.jpg.asset.json";
+import dgTchad from "@/assets/dg-tchad.jpg.asset.json";
+import dgMali from "@/assets/dg-mali.jpg.asset.json";
+import dgRca from "@/assets/dg-rca.jpg.asset.json";
+import dgMauritanie from "@/assets/dg-mauritanie.jpg.asset.json";
 
 export const SITE = {
   name: "Groupe SIAT-Engineering",
@@ -67,6 +72,7 @@ export const COUNTRIES: Country[] = [
         poste: "Représentant pays",
         email: "oumar.toure@siat-engineering.com",
         telephones: ["(00236) 74 57 00 17", "(00236) 70 02 22 66"],
+        photo: dgRca.url,
       },
     ],
   },
@@ -84,6 +90,7 @@ export const COUNTRIES: Country[] = [
         poste: "Représentant pays",
         email: "souleyman.haroun@siat-engineering.com",
         telephones: ["(00235) 66 38 81 59", "(00235) 90 27 21 20"],
+        photo: dgTchad.url,
       },
     ],
   },
@@ -101,6 +108,7 @@ export const COUNTRIES: Country[] = [
         poste: "Représentant pays",
         email: "mahaman.abdou@siat-engineering.com",
         telephones: ["(00227) 96 14 77 14", "(00227) 93 48 21 20"],
+        photo: dgNiger.url,
       },
     ],
   },
@@ -118,6 +126,7 @@ export const COUNTRIES: Country[] = [
         poste: "Représentant pays",
         email: "yaya.faradjallah@siat-engineering.com",
         telephones: ["(00223) 70 44 79 80"],
+        photo: dgMali.url,
       },
     ],
   },
@@ -135,6 +144,24 @@ export const COUNTRIES: Country[] = [
         poste: "Représentant pays",
         email: "abdoul.bindoh@siat-engineering.com",
         telephones: ["(00234) 080 878 380 06", "(00234) 706 716 2161"],
+      },
+    ],
+  },
+  {
+    pays: "Mauritanie",
+    statut: "Représentation",
+    ville: "Nouakchott",
+    mapQuery: "Nouakchott, Mauritanie",
+    telephones: ["(00222) 45 25 10 20"],
+    directeur: "Mohamed Ould Ahmed",
+    emailDirection: "contact@siat-engineering.com",
+    contacts: [
+      {
+        nom: "Mohamed Ould Ahmed",
+        poste: "Directeur Général",
+        email: "contact@siat-engineering.com",
+        telephones: ["(00222) 45 25 10 20"],
+        photo: dgMauritanie.url,
       },
     ],
   },
@@ -535,7 +562,7 @@ export const VALEURS = [
 ];
 
 export const CHIFFRES = [
-  { valeur: "6", label: "Pays d'implantation" },
+  { valeur: "7", label: "Pays d'implantation" },
   { valeur: "12", label: "Domaines d'expertise" },
   { valeur: "48%", label: "Chiffre d'affaires à l'export" },
   { valeur: "ISO", label: "Certification en cours" },
