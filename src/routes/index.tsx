@@ -311,10 +311,11 @@ function Partenaires() {
                     src={logo}
                     alt={`Logo ${p.nom}`}
                     loading="lazy"
-                    width={40}
-                    height={40}
-                    className="h-10 w-10 shrink-0 rounded-sm bg-background object-contain p-1"
+                    width={56}
+                    height={48}
+                    className="h-12 w-14 shrink-0 rounded-sm bg-background object-contain p-1"
                   />
+
                 )}
                 <span className="font-display text-sm font-medium text-primary/80">{p.nom}</span>
               </span>
