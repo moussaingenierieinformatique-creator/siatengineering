@@ -83,7 +83,7 @@ function DomainePage() {
               Un projet dans ce domaine ?
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Nos équipes pluridisciplinaires vous répondent sous 48 heures depuis l'une de nos six
+              Nos équipes pluridisciplinaires vous répondent sous 48 heures depuis l'une de nos sept
               implantations.
             </p>
             <ul className="mt-5 space-y-2 text-sm text-muted-foreground">

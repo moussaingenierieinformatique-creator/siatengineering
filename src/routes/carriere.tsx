@@ -123,7 +123,7 @@ function Carriere() {
                 Travailler chez SIAT-Engineering
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Des projets structurants dans six pays, des équipes pluridisciplinaires et des
+                Des projets structurants dans sept pays, des équipes pluridisciplinaires et des
                 méthodes calées sur les standards internationaux.
               </p>
             </div>
