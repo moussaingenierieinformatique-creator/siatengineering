@@ -113,7 +113,7 @@ function APropos() {
       <section className="bg-surface py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionTitle
-            eyebrow="2.2 Notre présence régionale"
+            eyebrow="2.3 Notre présence régionale"
             title="Sept implantations, un seul standard technique"
           />
           <div className="mt-10 overflow-x-auto rounded-sm border border-border bg-card">
