@@ -32,13 +32,13 @@ const inputClass =
   "w-full rounded-sm border border-input bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-accent";
 
 const FLAGS: Record<string, string> = {
-  Cameroun: "https://flagcdn.com/w160/cm.png",
-  "République Centrafricaine": "https://flagcdn.com/w160/cf.png",
-  Tchad: "https://flagcdn.com/w160/td.png",
-  Niger: "https://flagcdn.com/w160/ne.png",
-  Mali: "https://flagcdn.com/w160/ml.png",
-  Nigeria: "https://flagcdn.com/w160/ng.png",
-  Mauritanie: "https://flagcdn.com/w160/mr.png",
+  Cameroun: "https://flagcdn.com/w640/cm.png",
+  "République Centrafricaine": "https://flagcdn.com/w640/cf.png",
+  Tchad: "https://flagcdn.com/w640/td.png",
+  Niger: "https://flagcdn.com/w640/ne.png",
+  Mali: "https://flagcdn.com/w640/ml.png",
+  Nigeria: "https://flagcdn.com/w640/ng.png",
+  Mauritanie: "https://flagcdn.com/w640/mr.png",
 };
 
 function Contact() {
@@ -139,12 +139,12 @@ function Contact() {
                   key={c.pays}
                   className="group relative overflow-hidden rounded-sm border border-border bg-card"
                 >
-                  <div className="flag-silk relative h-40 overflow-hidden bg-surface p-3">
+                  <div className="flag-silk relative aspect-[3/2] w-full overflow-hidden bg-navy-deep">
                     <img
                       src={FLAGS[c.pays]}
                       alt={`Drapeau ${c.pays}`}
                       loading="lazy"
-                      className="animate-flag-wave h-full w-full object-contain drop-shadow"
+                      className="animate-flag-wave h-full w-full object-cover"
                     />
                     <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end bg-gradient-to-t from-navy-deep/90 via-navy-deep/60 to-transparent p-4 pt-10">
                       <h3 className="font-display text-lg font-bold text-primary-foreground">
@@ -166,12 +166,12 @@ function Contact() {
                               src={p.photo}
                               alt={p.nom}
                               loading="lazy"
-                              className="h-64 w-full object-cover"
+                              className="h-72 w-full object-cover object-[center_25%]"
                             />
                           ) : (
                             <div
                               aria-hidden="true"
-                              className="flex h-64 w-full items-center justify-center bg-surface font-display text-5xl font-bold text-accent"
+                              className="flex h-72 w-full items-center justify-center bg-surface font-display text-5xl font-bold text-accent"
                             >
                               {p.nom
                                 .split(" ")

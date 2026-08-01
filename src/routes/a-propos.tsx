@@ -48,26 +48,22 @@ function APropos() {
           <div>
             <SectionTitle eyebrow="2.1 Le Groupe" title="Le Groupe" />
             <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
-              <p>
-                Groupe SIAT-Engineering est une société d'ingénierie à vocation régionale et
-                sous-régionale spécialisée dans les études techniques et la supervision des travaux.
-                Fortement implantée dans la sous-région, et de plus en plus en Afrique, elle a
-                développé ces dernières années une expertise confirmée dans ses métiers de base.
+              <p className="text-block">
+                La flexibilité de son organisation adossée à des compétences internes hautement
+                qualifiées, les multiples relations tissées avec les leaders de l'ingénierie, et son
+                association à un réseau international et sélectif de consultants confèrent au Groupe
+                SIAT-Engineering toute la capacité requise pour répondre aux attentes et exigences
+                les plus pointues de ses clients et de son marché.
               </p>
-              <p>
-                Groupe SIAT-Engineering, bureau d'études et d'ingénierie pluridisciplinaire,
-                accompagne ses clients-partenaires, entreprises et institutions publiques ou privées,
-                dans l'identification, la conception, la réalisation et le suivi de leurs stratégies
-                et projets. Depuis sa création, le Groupe a orienté ses activités à l'exportation et
-                réalise, à travers sa filiale, 48% de son chiffre d'affaires sur les marchés
-                extérieurs.
-              </p>
-              <p>
-                Dans le souci d'amélioration constante de ses prestations, SIAT-Engineering est en
-                démarche d'obtention d'une certification qualité ISO auprès de Bureau Veritas
-                Certification (certification en cours, non acquise).
+              <p className="text-block">
+                Afin d'accroître la valeur ajoutée de son capital humain, Groupe SIAT-Engineering
+                place la qualité au cœur de ses prestations et de son organisation. Celle-ci
+                constitue une réalité et un engagement, concrétisés par l'existence de modes de
+                gestion rigoureux et des ressources techniques, logicielles et documentaires sans
+                cesse actualisées.
               </p>
             </div>
+
           </div>
           <img
             src={photo("img_p7_2")}
