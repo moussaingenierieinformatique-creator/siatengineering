@@ -43,7 +43,7 @@ const FLAGS: Record<string, string> = {
 
 function Contact() {
   const [sent, setSent] = useState(false);
-  const [showMap, setShowMap] = useState(false);
+  
 
   function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -112,24 +112,15 @@ function Contact() {
             </form>
 
             <div className="mt-10">
-              <button
-                type="button"
-                onClick={() => setShowMap((v) => !v)}
-                aria-expanded={showMap}
-                aria-label={showMap ? "Masquer la carte d'Afrique" : "Afficher la carte d'Afrique"}
-                title={showMap ? "Masquer la carte" : "Afficher la carte"}
-                className="h-2.5 w-2.5 rounded-full bg-border opacity-40 transition-opacity hover:opacity-100"
-              />
-              {showMap && (
-                <div className="mt-5 rounded-sm border border-border bg-card p-5">
-                  <p className="eyebrow">Notre présence en Afrique</p>
-                  <div className="mt-4 flex justify-center">
-                    <AfricaPresenceMap />
-                  </div>
+              <div className="rounded-sm border border-border bg-card p-5">
+                <p className="eyebrow">Notre présence en Afrique</p>
+                <div className="mt-4 flex justify-center">
+                  <AfricaPresenceMap />
                 </div>
-              )}
+              </div>
             </div>
           </div>
+
 
 
           <div>
