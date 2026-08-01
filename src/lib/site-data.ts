@@ -5,7 +5,9 @@ import dgNiger from "@/assets/dg-niger.jpg.asset.json";
 import dgTchad from "@/assets/dg-tchad.jpg.asset.json";
 import dgMali from "@/assets/dg-mali.jpg.asset.json";
 import dgRca from "@/assets/dg-rca.jpg.asset.json";
-import dgMauritanie from "@/assets/dg-mauritanie.jpg.asset.json";
+import dgMauritanie from "@/assets/dg-mauritanie-2.jpg.asset.json";
+import dgNigeria from "@/assets/dg-nigeria.jpg.asset.json";
+
 
 export const SITE = {
   name: "Groupe SIAT-Engineering",
@@ -144,8 +146,10 @@ export const COUNTRIES: Country[] = [
         poste: "Représentant pays",
         email: "abdoul.bindoh@siat-engineering.com",
         telephones: ["(00234) 080 878 380 06", "(00234) 706 716 2161"],
+        photo: dgNigeria.url,
       },
     ],
+
   },
   {
     pays: "Mauritanie",
