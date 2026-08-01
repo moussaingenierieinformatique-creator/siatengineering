@@ -139,14 +139,14 @@ function Contact() {
                   key={c.pays}
                   className="group relative overflow-hidden rounded-sm border border-border bg-card"
                 >
-                  <div className="flag-silk relative h-28 overflow-hidden bg-surface">
+                  <div className="flag-silk relative h-40 overflow-hidden bg-surface p-3">
                     <img
                       src={FLAGS[c.pays]}
                       alt={`Drapeau ${c.pays}`}
                       loading="lazy"
-                      className="animate-flag-wave h-full w-full object-cover"
+                      className="animate-flag-wave h-full w-full object-contain drop-shadow"
                     />
-                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-navy-deep/85 to-transparent p-4">
+                    <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end bg-gradient-to-t from-navy-deep/90 via-navy-deep/60 to-transparent p-4 pt-10">
                       <h3 className="font-display text-lg font-bold text-primary-foreground">
                         {c.pays}
                       </h3>
@@ -155,6 +155,7 @@ function Contact() {
                       </p>
                     </div>
                   </div>
+
 
                   <div className="p-6">
                     {c.contacts.map((p) => (
