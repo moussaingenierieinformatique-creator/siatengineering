@@ -145,41 +145,6 @@ function APropos() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
-          <div>
-            <div className="flex h-72 w-full items-center justify-center rounded-sm border border-dashed border-border bg-surface text-center text-xs uppercase tracking-widest text-muted-foreground">
-              Portrait du Président
-              <br />
-              Directeur Général
-            </div>
-          </div>
-          <div>
-            <SectionTitle eyebrow="2.3 Mot du PDG" title="Donner corps aux idées, transformer les projets en réalisations" />
-            <Quote className="mt-6 h-8 w-8 text-accent" />
-            <div className="mt-4 space-y-4 text-base leading-relaxed text-muted-foreground">
-              <p>
-                Groupe SIAT-Engineering développe une forte expertise dans les métiers de
-                l'ingénierie/conseil de la sous-région. Ses références prestigieuses et multiples
-                confortent sa position d'acteur majeur au service du développement.
-              </p>
-              <p>
-                Notre expérience, notre maîtrise des techniques et des technologies nous permettent
-                de donner corps aux idées, de transformer les projets en réalisations.
-              </p>
-              <p>
-                Notre approche pluridisciplinaire intègre les multiples facettes d'un projet, dans
-                une recherche permanente de la qualité au service de nos clients et du respect du
-                développement durable.
-              </p>
-              <p>
-                Cette démarche n'a été possible que par l'engagement de tous nos collaborateurs, la
-                confiance de nos clients et le soutien de nos partenaires.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="surface-navy py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
