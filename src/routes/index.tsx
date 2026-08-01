@@ -305,20 +305,28 @@ function Partenaires() {
             return (
               <span
                 key={`${p.nom}-${i}`}
-                className="flex min-w-[17rem] items-center gap-4 whitespace-nowrap rounded-sm border border-border bg-surface px-6 py-5"
+                className="flex min-w-[15rem] flex-col items-center justify-start gap-4 rounded-sm border border-border bg-surface px-6 py-6 text-center"
               >
                 {logo && (
                   <img
                     src={logo}
                     alt={`Logo ${p.nom}`}
                     loading="lazy"
-                    width={88}
-                    height={80}
-                    className="h-20 w-22 shrink-0 rounded-sm bg-background object-contain p-1"
+                    width={128}
+                    height={96}
+                    onError={(e) => {
+                      const el = e.currentTarget;
+                      if (p.domaine && !el.dataset.fallback) {
+                        el.dataset.fallback = "1";
+                        el.src = `https://www.google.com/s2/favicons?domain=${p.domaine}&sz=256`;
+                      }
+                    }}
+                    className="h-24 w-32 shrink-0 rounded-sm bg-background object-contain p-2"
                   />
-
                 )}
-                <span className="font-display text-base font-semibold text-primary">{p.nom}</span>
+                <span className="max-w-[13rem] font-display text-sm font-semibold leading-snug text-primary">
+                  {p.nom}
+                </span>
               </span>
             );
           })}

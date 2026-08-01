@@ -555,7 +555,10 @@ export const PARTNERS: Partner[] = [
 ];
 
 export const partnerLogo = (p: Partner) =>
-  p.logo ?? (p.domaine ? `https://www.google.com/s2/favicons?domain=${p.domaine}&sz=128` : undefined);
+  p.logo ??
+  (p.domaine
+    ? `https://logo.clearbit.com/${p.domaine}?size=256`
+    : undefined);
 
 
 export const VALEURS = [

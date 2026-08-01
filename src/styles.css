@@ -271,11 +271,11 @@
   font-family: var(--font-display);
   font-weight: 700;
   text-transform: none;
-  color: var(--title-red);
+  color: var(--navy-deep);
   letter-spacing: 0.01em;
   white-space: nowrap;
   text-decoration: underline;
-  text-decoration-color: var(--navy-deep);
+  text-decoration-color: var(--title-red);
   text-underline-offset: 0.35em;
   text-decoration-thickness: 3px;
 }
