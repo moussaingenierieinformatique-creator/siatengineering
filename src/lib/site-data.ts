@@ -539,21 +539,26 @@ import pamLogo from "@/assets/partners-pam.png.asset.json";
 import unicefLogo from "@/assets/partners-unicef1.png.asset.json";
 import undpLogo from "@/assets/partners-unpd.png.asset.json";
 import worldBankLogo from "@/assets/partners-banque_mondiale.png.asset.json";
+import badLogo from "@/assets/partners-bad.png.asset.json";
+import afdLogo from "@/assets/partners-afd.png.asset.json";
+import ueLogo from "@/assets/partners-ue.png.asset.json";
+import cbltLogo from "@/assets/partners-cblt.png.asset.json";
+import cemacLogo from "@/assets/partners-cemac.png.asset.json";
 
 export const PARTNERS: Partner[] = [
-  { nom: "Banque Africaine de Développement (BAD)", domaine: "afdb.org" },
+  { nom: "Banque Africaine de Développement (BAD)", domaine: "afdb.org", logo: badLogo.url },
   { nom: "Banque Mondiale", domaine: "worldbank.org", logo: worldBankLogo.url },
-  { nom: "Agence Française de Développement (AFD)", domaine: "afd.fr" },
+  { nom: "Agence Française de Développement (AFD)", domaine: "afd.fr", logo: afdLogo.url },
   { nom: "PNUD", domaine: "undp.org", logo: undpLogo.url },
   { nom: "UNICEF", domaine: "unicef.org", logo: unicefLogo.url },
   { nom: "PAM", domaine: "wfp.org", logo: pamLogo.url },
   { nom: "Catholic Relief Services (CRS)", domaine: "crs.org", logo: crsLogo.url },
   { nom: "Banque Islamique de Développement (BID)", domaine: "isdb.org", logo: isdbLogo.url },
-  { nom: "Union Européenne", domaine: "european-union.europa.eu" },
+  { nom: "Union Européenne", domaine: "european-union.europa.eu", logo: ueLogo.url },
   { nom: "Eau Vive International", domaine: "eau-vive.org", logo: eauViveLogo.url },
 
-  { nom: "Commission du Bassin du Lac Tchad (CBLT)", domaine: "cblt.org" },
-  { nom: "CEMAC", domaine: "cemac.int" },
+  { nom: "Commission du Bassin du Lac Tchad (CBLT)", domaine: "cblt.org", logo: cbltLogo.url },
+  { nom: "CEMAC", domaine: "cemac.int", logo: cemacLogo.url },
 ];
 
 export const partnerLogo = (p: Partner) =>

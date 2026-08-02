@@ -172,24 +172,40 @@ function APropos() {
           intro="Noms et adresses email provisoires, en cours de validation."
         />
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {COUNTRIES.map((c) => (
-            <div key={c.pays} className="card-lift rounded-sm border border-border bg-card p-6">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-surface font-display text-lg font-bold text-primary">
-                {c.pays.slice(0, 2).toUpperCase()}
+          {COUNTRIES.map((c) => {
+            const portrait = c.contacts.find((k) => k.photo)?.photo;
+            return (
+            <div key={c.pays} className="card-lift overflow-hidden rounded-sm border border-border bg-card">
+              <div className="relative h-56 w-full overflow-hidden bg-surface">
+                {portrait ? (
+                  <img
+                    src={portrait}
+                    alt={`${c.directeur} — Directeur ${c.pays}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-[center_25%]"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center font-display text-4xl font-bold text-primary/40">
+                    {c.pays.slice(0, 2).toUpperCase()}
+                  </div>
+                )}
               </div>
-              <p className="mt-5 eyebrow">{c.pays}</p>
-              <h3 className="mt-2 font-display text-lg font-semibold text-foreground">
-                {c.directeur}
-              </h3>
-              <p className="mt-1 text-sm text-muted-foreground">Directeur Général — {c.ville}</p>
-              <a
-                href={`mailto:${c.emailDirection}`}
-                className="mt-3 block break-all text-sm text-accent hover:underline"
-              >
-                {c.emailDirection}
-              </a>
+              <div className="p-6">
+                <p className="eyebrow">{c.pays}</p>
+                <h3 className="mt-2 font-display text-lg font-semibold text-foreground">
+                  {c.directeur}
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">Directeur Général — {c.ville}</p>
+                <a
+                  href={`mailto:${c.emailDirection}`}
+                  className="mt-3 block break-all text-sm text-accent hover:underline"
+                >
+                  {c.emailDirection}
+                </a>
+              </div>
             </div>
-          ))}
+            );
+          })}
         </div>
         <Link
           to="/savoir-faire"
