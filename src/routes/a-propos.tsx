@@ -3,6 +3,8 @@ import { ArrowRight, Quote } from "lucide-react";
 import { SiteLayout, PageHero, SectionTitle } from "@/components/site/SiteLayout";
 import { COUNTRIES, VALEURS } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
+import pdgPhoto from "@/assets/pdg-siat.png.asset.json";
+
 
 export const Route = createFileRoute("/a-propos")({
   component: APropos,
@@ -44,16 +46,47 @@ function APropos() {
       />
 
       <section className="mx-auto max-w-7xl px-5 pt-24 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+        <div className="grid gap-14 lg:grid-cols-[1.3fr_1fr]">
           <div>
-            <div className="flex h-72 w-full items-center justify-center rounded-sm border border-dashed border-border bg-surface text-center text-xs uppercase tracking-widest text-muted-foreground">
-              Portrait du Président
-              <br />
-              Directeur Général
+            <SectionTitle eyebrow="2.1 À propos de nous" title="À propos de nous" />
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
+              <p className="text-block">
+                La flexibilité de son organisation adossée à des compétences internes hautement
+                qualifiées, les multiples relations tissées avec les leaders de l'ingénierie, et son
+                association à un réseau international et sélectif de consultants confèrent au Groupe
+                SIAT-Engineering toute la capacité requise pour répondre aux attentes et exigences
+                les plus pointues de ses clients et de son marché.
+              </p>
+              <p className="text-block">
+                Afin d'accroître la valeur ajoutée de son capital humain, Groupe SIAT-Engineering
+                place la qualité au cœur de ses prestations et de son organisation. Celle-ci
+                constitue une réalité et un engagement, concrétisés par l'existence de modes de
+                gestion rigoureux et des ressources techniques, logicielles et documentaires sans
+                cesse actualisées.
+              </p>
             </div>
           </div>
+          <img
+            src={photo("img_p7_2")}
+            alt="Réunion d'équipe pluridisciplinaire du Groupe SIAT-Engineering autour des plans"
+            loading="lazy"
+            className="h-full min-h-72 w-full rounded-sm object-cover shadow-[var(--shadow-card)]"
+          />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
           <div>
-            <SectionTitle eyebrow="2.1 Mot du PDG" title="Mot du PDG" />
+            <img
+              src={pdgPhoto.url}
+              alt="Portrait du Président Directeur Général du Groupe SIAT-Engineering"
+              loading="lazy"
+              className="h-full max-h-[28rem] w-full rounded-sm object-cover object-center shadow-[var(--shadow-card)]"
+            />
+          </div>
+          <div>
+            <SectionTitle eyebrow="2.2 Mot du PDG" title="Mot du PDG" />
             <Quote className="mt-6 h-8 w-8 text-accent" />
             <div className="mt-4 space-y-4 text-base leading-relaxed text-muted-foreground">
               <p className="text-block">
@@ -79,36 +112,6 @@ function APropos() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-[1.3fr_1fr]">
-          <div>
-            <SectionTitle eyebrow="2.2 À propos de nous" title="À propos de nous" />
-            <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
-              <p className="text-block">
-                La flexibilité de son organisation adossée à des compétences internes hautement
-                qualifiées, les multiples relations tissées avec les leaders de l'ingénierie, et son
-                association à un réseau international et sélectif de consultants confèrent au Groupe
-                SIAT-Engineering toute la capacité requise pour répondre aux attentes et exigences
-                les plus pointues de ses clients et de son marché.
-              </p>
-              <p className="text-block">
-                Afin d'accroître la valeur ajoutée de son capital humain, Groupe SIAT-Engineering
-                place la qualité au cœur de ses prestations et de son organisation. Celle-ci
-                constitue une réalité et un engagement, concrétisés par l'existence de modes de
-                gestion rigoureux et des ressources techniques, logicielles et documentaires sans
-                cesse actualisées.
-              </p>
-            </div>
-
-          </div>
-          <img
-            src={photo("img_p7_2")}
-            alt="Réunion d'équipe pluridisciplinaire du Groupe SIAT-Engineering autour des plans"
-            loading="lazy"
-            className="h-full min-h-72 w-full rounded-sm object-cover shadow-[var(--shadow-card)]"
-          />
-        </div>
-      </section>
 
       <section className="bg-surface py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">

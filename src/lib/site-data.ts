@@ -532,16 +532,17 @@ export function getDomain(slug: string): Domain | undefined {
 
 export type Partner = { nom: string; domaine?: string; logo?: string };
 
-import isdbLogo from "@/assets/partners-banque_islamique.jpg.asset.json";
-import crsLogo from "@/assets/partners-crs.jpg.asset.json";
-import eauViveLogo from "@/assets/partners-eau_vive.jpg.asset.json";
-import pamLogo from "@/assets/partners-pam.jpg.asset.json";
-import unicefLogo from "@/assets/partners-unicef1.jpg.asset.json";
-import undpLogo from "@/assets/partners-unpd.jpg.asset.json";
+import isdbLogo from "@/assets/partners-banque_islamique.png.asset.json";
+import crsLogo from "@/assets/partners-crs.png.asset.json";
+import eauViveLogo from "@/assets/partners-eau_vive.png.asset.json";
+import pamLogo from "@/assets/partners-pam.png.asset.json";
+import unicefLogo from "@/assets/partners-unicef1.png.asset.json";
+import undpLogo from "@/assets/partners-unpd.png.asset.json";
+import worldBankLogo from "@/assets/partners-banque_mondiale.png.asset.json";
 
 export const PARTNERS: Partner[] = [
   { nom: "Banque Africaine de Développement (BAD)", domaine: "afdb.org" },
-  { nom: "Banque Mondiale", domaine: "worldbank.org" },
+  { nom: "Banque Mondiale", domaine: "worldbank.org", logo: worldBankLogo.url },
   { nom: "Agence Française de Développement (AFD)", domaine: "afd.fr" },
   { nom: "PNUD", domaine: "undp.org", logo: undpLogo.url },
   { nom: "UNICEF", domaine: "unicef.org", logo: unicefLogo.url },
@@ -550,6 +551,7 @@ export const PARTNERS: Partner[] = [
   { nom: "Banque Islamique de Développement (BID)", domaine: "isdb.org", logo: isdbLogo.url },
   { nom: "Union Européenne", domaine: "european-union.europa.eu" },
   { nom: "Eau Vive International", domaine: "eau-vive.org", logo: eauViveLogo.url },
+
   { nom: "Commission du Bassin du Lac Tchad (CBLT)", domaine: "cblt.org" },
   { nom: "CEMAC", domaine: "cemac.int" },
 ];
