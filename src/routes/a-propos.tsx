@@ -3,6 +3,8 @@ import { ArrowRight, Quote } from "lucide-react";
 import { SiteLayout, PageHero, SectionTitle } from "@/components/site/SiteLayout";
 import { COUNTRIES, VALEURS } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
+import pdgPhoto from "@/assets/pdg-siat.png.asset.json";
+
 
 export const Route = createFileRoute("/a-propos")({
   component: APropos,
