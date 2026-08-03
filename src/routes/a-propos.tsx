@@ -3,6 +3,8 @@ import { ArrowRight, Quote } from "lucide-react";
 import { SiteLayout, PageHero, SectionTitle } from "@/components/site/SiteLayout";
 import { COUNTRIES, VALEURS } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
+import { flagOf } from "@/lib/flags";
+
 import pdgPhoto from "@/assets/pdg-siat.png.asset.json";
 
 
