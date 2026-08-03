@@ -3,8 +3,10 @@ import { ArrowRight, ShieldCheck, Landmark, Globe2, Download, Check } from "luci
 import { useEffect, useState, type FormEvent } from "react";
 import hero from "@/assets/banniere-siat.jpg.asset.json";
 import { SiteLayout, SectionTitle } from "@/components/site/SiteLayout";
-import { CHIFFRES, COUNTRIES, DOMAINS, PARTNERS, domainCover, partnerLogo } from "@/lib/site-data";
+import { RotatingImage } from "@/components/site/RotatingImage";
+import { CHIFFRES, COUNTRIES, DOMAINS, PARTNERS, partnerLogo } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
+
 
 export const Route = createFileRoute("/")({
   component: Accueil,
