@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
-import { DOMAINS, domainCover } from "@/lib/site-data";
+import { RotatingImage } from "@/components/site/RotatingImage";
+import { DOMAINS } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
+
 
 export const Route = createFileRoute("/savoir-faire/")({
   component: SavoirFaire,
