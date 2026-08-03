@@ -20,15 +20,16 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-5 lg:px-8">
-        <Link to="/" className="flex items-center gap-3" aria-label="Groupe SIAT-Engineering">
+        <Link to="/" className="group flex items-center gap-3" aria-label="Groupe SIAT-Engineering">
           <img
             src={logo.url}
             alt="Logo Groupe SIAT-Engineering"
-            width={160}
-            height={100}
-            className="h-11 w-auto"
+            width={260}
+            height={162}
+            className="animate-fade-in h-14 w-auto transition-transform duration-500 ease-out group-hover:scale-105 sm:h-16 lg:h-[4.5rem]"
           />
         </Link>
+
 
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV.map((item) =>
