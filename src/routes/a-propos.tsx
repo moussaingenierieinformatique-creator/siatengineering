@@ -170,39 +170,61 @@ function APropos() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {COUNTRIES.map((c) => {
             const portrait = c.contacts.find((k) => k.photo)?.photo;
+            const flag = flagOf(c.pays);
             return (
-            <div key={c.pays} className="card-lift overflow-hidden rounded-sm border border-border bg-card">
-              <div className="relative h-56 w-full overflow-hidden bg-surface">
-                {portrait ? (
-                  <img
-                    src={portrait}
-                    alt={`${c.directeur} — Directeur ${c.pays}`}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-[center_25%]"
-                  />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center font-display text-4xl font-bold text-primary/40">
-                    {c.pays.slice(0, 2).toUpperCase()}
+              <div
+                key={c.pays}
+                className="card-lift overflow-hidden rounded-sm border border-border bg-card"
+              >
+                {/* Bandeau d'informations posé sur le drapeau du pays */}
+                <div className="relative isolate overflow-hidden">
+                  {flag && (
+                    <img
+                      src={flag}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-navy-deep/70" aria-hidden="true" />
+                  <div className="relative p-5">
+                    <h3 className="font-display text-lg font-semibold text-primary-foreground">
+                      {c.directeur}
+                    </h3>
+                    <p className="mt-1 text-sm text-primary-foreground/85">
+                      Directeur Général — {c.ville}
+                    </p>
+                    <p className="mt-2 font-display text-xs uppercase tracking-widest text-primary-foreground/90">
+                      {c.pays}
+                    </p>
+                    <a
+                      href={`mailto:${c.emailDirection}`}
+                      className="mt-3 block break-all text-sm text-primary-foreground underline-offset-4 hover:underline"
+                    >
+                      {c.emailDirection}
+                    </a>
                   </div>
-                )}
+                </div>
+                <div className="relative h-60 w-full overflow-hidden bg-surface">
+                  {portrait ? (
+                    <img
+                      src={portrait}
+                      alt={`${c.directeur} — Directeur ${c.pays}`}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-[center_25%]"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center font-display text-4xl font-bold text-primary/40">
+                      {c.pays.slice(0, 2).toUpperCase()}
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="p-6">
-                <p className="eyebrow">{c.pays}</p>
-                <h3 className="mt-2 font-display text-lg font-semibold text-foreground">
-                  {c.directeur}
-                </h3>
-                <p className="mt-1 text-sm text-muted-foreground">Directeur Général — {c.ville}</p>
-                <a
-                  href={`mailto:${c.emailDirection}`}
-                  className="mt-3 block break-all text-sm text-accent hover:underline"
-                >
-                  {c.emailDirection}
-                </a>
-              </div>
-            </div>
             );
           })}
         </div>
+
         <Link
           to="/savoir-faire"
           className="mt-12 inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
