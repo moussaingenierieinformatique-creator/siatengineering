@@ -37,7 +37,7 @@ function SavoirFaire() {
       />
       <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {DOMAINS.map((d) => (
+          {DOMAINS.map((d, i) => (
             <Link
               key={d.slug}
               to="/savoir-faire/$slug"
@@ -45,16 +45,18 @@ function SavoirFaire() {
               className="card-lift group flex flex-col overflow-hidden rounded-sm border border-border bg-card"
             >
               <div className="relative h-48 overflow-hidden">
-                <img
-                  src={domainCover(d)}
+                <RotatingImage
+                  images={d.images.map((n) => photo(n)).filter(Boolean)}
                   alt={d.titre}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  interval={4000 + i * 450}
+                  delay={i * 350}
+                  className="h-full w-full transition-transform duration-500 group-hover:scale-105"
                 />
-                <span className="absolute left-0 top-0 bg-accent px-3 py-1.5 font-display text-xs font-bold text-accent-foreground">
+                <span className="absolute left-0 top-0 z-10 bg-accent px-3 py-1.5 font-display text-xs font-bold text-accent-foreground">
                   {String(d.numero).padStart(2, "0")}
                 </span>
               </div>
+
               <div className="flex flex-1 flex-col p-6">
                 <h2 className="font-display text-lg font-semibold text-foreground group-hover:text-accent">
                   {d.titre}
