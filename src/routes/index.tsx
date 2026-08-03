@@ -55,6 +55,31 @@ const REGIONAL_SLIDES = [
   { pays: "Mauritanie", ville: "Nouakchott", image: photo("img_p11_2") },
 ];
 
+// Chaque vignette est rattachée à une catégorie métier et fait défiler ses propres visuels.
+const RESSOURCES_CATEGORIES: { label: string; alt: string; images: string[] }[] = [
+  {
+    label: "Études & conception",
+    alt: "Équipes SIAT-Engineering en études techniques et conception",
+    images: ["img_p7_1", "img_p7_2", "img_p7_3", "img_p14_1"].map(photo),
+  },
+  {
+    label: "Topographie & terrain",
+    alt: "Ingénieurs SIAT-Engineering en levés topographiques et travaux de terrain",
+    images: ["img_p8_8", "img_p8_1", "img_p13_1", "img_p12_5"].map(photo),
+  },
+  {
+    label: "Ouvrages d'art & routes",
+    alt: "Supervision d'ouvrages d'art et de chantiers routiers",
+    images: ["img_p9_1", "img_p10_2", "img_p10_6", "img_p9_3"].map(photo),
+  },
+  {
+    label: "Hydraulique & bâtiment",
+    alt: "Infrastructures hydrauliques et projets de bâtiment",
+    images: ["img_p11_2", "img_p11_3", "img_p12_2", "img_p13_6"].map(photo),
+  },
+];
+
+
 function Accueil() {
   return (
     <SiteLayout>
