@@ -3,8 +3,10 @@ import { ArrowRight, ShieldCheck, Landmark, Globe2, Download, Check } from "luci
 import { useEffect, useState, type FormEvent } from "react";
 import hero from "@/assets/banniere-siat.jpg.asset.json";
 import { SiteLayout, SectionTitle } from "@/components/site/SiteLayout";
-import { CHIFFRES, COUNTRIES, DOMAINS, PARTNERS, domainCover, partnerLogo } from "@/lib/site-data";
+import { RotatingImage } from "@/components/site/RotatingImage";
+import { CHIFFRES, COUNTRIES, DOMAINS, PARTNERS, partnerLogo } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
+
 
 export const Route = createFileRoute("/")({
   component: Accueil,
@@ -52,6 +54,31 @@ const REGIONAL_SLIDES = [
   { pays: "Nigeria", ville: "Abuja", image: photo("img_p10_2") },
   { pays: "Mauritanie", ville: "Nouakchott", image: photo("img_p11_2") },
 ];
+
+// Chaque vignette est rattachée à une catégorie métier et fait défiler ses propres visuels.
+const RESSOURCES_CATEGORIES: { label: string; alt: string; images: string[] }[] = [
+  {
+    label: "Études & conception",
+    alt: "Équipes SIAT-Engineering en études techniques et conception",
+    images: ["img_p7_1", "img_p7_2", "img_p7_3", "img_p14_1"].map(photo),
+  },
+  {
+    label: "Topographie & terrain",
+    alt: "Ingénieurs SIAT-Engineering en levés topographiques et travaux de terrain",
+    images: ["img_p8_8", "img_p8_1", "img_p13_1", "img_p12_5"].map(photo),
+  },
+  {
+    label: "Ouvrages d'art & routes",
+    alt: "Supervision d'ouvrages d'art et de chantiers routiers",
+    images: ["img_p9_1", "img_p10_2", "img_p10_6", "img_p9_3"].map(photo),
+  },
+  {
+    label: "Hydraulique & bâtiment",
+    alt: "Infrastructures hydrauliques et projets de bâtiment",
+    images: ["img_p11_2", "img_p11_3", "img_p12_2", "img_p13_6"].map(photo),
+  },
+];
+
 
 function Accueil() {
   return (
@@ -174,19 +201,19 @@ function Groupe() {
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          {[
-            { src: photo("img_p7_2"), alt: "Équipe SIAT-Engineering en réunion d'études techniques" },
-            { src: photo("img_p8_8"), alt: "Ingénieurs SIAT-Engineering réalisant des levés topographiques" },
-            { src: photo("img_p9_1"), alt: "Supervision d'un ouvrage de franchissement" },
-            { src: photo("img_p11_2"), alt: "Infrastructure d'eau potable en milieu urbain" },
-          ].map((img) => (
-            <img
-              key={img.src}
-              src={img.src}
-              alt={img.alt}
-              loading="lazy"
-              className="aspect-[4/3] h-full w-full rounded-sm object-cover shadow-[var(--shadow-card)]"
-            />
+          {RESSOURCES_CATEGORIES.map((cat, i) => (
+            <figure key={cat.label} className="group relative">
+              <RotatingImage
+                images={cat.images}
+                alt={cat.alt}
+                interval={4200 + i * 900}
+                delay={i * 700}
+                className="aspect-[4/3] w-full rounded-sm shadow-[var(--shadow-card)]"
+              />
+              <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-deep/85 to-transparent px-3 pb-2 pt-8 font-display text-[0.7rem] font-semibold uppercase tracking-widest text-primary-foreground">
+                {cat.label}
+              </figcaption>
+            </figure>
           ))}
         </div>
 
@@ -196,6 +223,10 @@ function Groupe() {
 }
 
 function Domaines() {
+  const [active, setActive] = useState(0);
+  const domain = DOMAINS[active];
+  const images = domain.images.map((n) => photo(n)).filter(Boolean);
+
   return (
     <section className="bg-surface py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -204,43 +235,79 @@ function Domaines() {
           title="12 domaines d'expertise"
           intro="L'expertise de Groupe SIAT-Engineering couvre la création, la conception, la modernisation des infrastructures modernes. Ils se développent sur la base des méthodes de calcul spécifiques et des règlements les plus récents, en tenant compte des techniques d'exécution les plus appropriées."
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {DOMAINS.map((d) => (
-            <Link
-              key={d.slug}
-              to="/savoir-faire/$slug"
-              params={{ slug: d.slug }}
-              className="card-lift group flex flex-col overflow-hidden rounded-sm bg-card"
-            >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={domainCover(d)}
-                  alt={d.titre}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <span className="absolute left-0 top-0 bg-accent px-3 py-1.5 font-display text-xs font-bold text-accent-foreground">
-                  {String(d.numero).padStart(2, "0")}
-                </span>
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-accent">
-                  {d.titre}
-                </h3>
-                <p className="text-block mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {d.accroche}
-                </p>
-                <span className="mt-5 inline-flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-widest text-accent">
-                  Découvrir <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </div>
-            </Link>
-          ))}
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-[22rem_1fr]">
+          <ul className="max-h-[34rem] space-y-1 overflow-y-auto pr-1">
+            {DOMAINS.map((d, i) => (
+              <li key={d.slug}>
+                <button
+                  type="button"
+                  onMouseEnter={() => setActive(i)}
+                  onFocus={() => setActive(i)}
+                  onClick={() => setActive(i)}
+                  aria-pressed={i === active}
+                  className={`flex w-full items-center gap-3 rounded-sm border px-4 py-3 text-left text-sm transition-all duration-300 ${
+                    i === active
+                      ? "border-accent bg-card font-semibold text-accent shadow-[var(--shadow-card)]"
+                      : "border-transparent text-foreground/75 hover:border-border hover:bg-card"
+                  }`}
+                >
+                  <span className="font-display text-xs text-muted-foreground">
+                    {String(d.numero).padStart(2, "0")}
+                  </span>
+                  <span className="flex-1">{d.titre}</span>
+                  <ArrowRight
+                    className={`h-4 w-4 transition-all duration-300 ${
+                      i === active ? "opacity-100" : "-translate-x-1 opacity-0"
+                    }`}
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          <div key={domain.slug} className="animate-fade-in overflow-hidden rounded-sm bg-card shadow-[var(--shadow-card)]">
+            <div className="relative">
+              <RotatingImage
+                images={images}
+                alt={`Illustrations du domaine ${domain.titre}`}
+                interval={3500}
+                className="aspect-[16/9] w-full"
+              />
+              <span className="absolute left-0 top-0 bg-accent px-3 py-1.5 font-display text-xs font-bold text-accent-foreground">
+                {String(domain.numero).padStart(2, "0")}
+              </span>
+            </div>
+            <div className="p-7">
+              <h3 className="font-display text-2xl font-semibold text-primary">{domain.titre}</h3>
+              <p className="text-block mt-3 text-sm leading-relaxed text-muted-foreground">
+                {domain.accroche}
+              </p>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                {domain.etapes.slice(0, 4).map((e) => (
+                  <li key={e.titre} className="rounded-sm bg-surface p-4">
+                    <p className="font-display text-sm font-semibold text-foreground">{e.titre}</p>
+                    <p className="text-block mt-1 text-xs leading-relaxed text-muted-foreground">
+                      {e.texte}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to="/savoir-faire/$slug"
+                params={{ slug: domain.slug }}
+                className="mt-7 inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                Découvrir ce domaine <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 function Presence() {
   const [index, setIndex] = useState(0);
