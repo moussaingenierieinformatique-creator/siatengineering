@@ -92,6 +92,25 @@ export function Footer() {
                     <Phone className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
                     <span>{c.telephones.join(" · ")}</span>
                   </p>
+                  <ul className="mt-2 space-y-1.5">
+                    {c.contacts.map((k) => (
+                      <li key={k.nom} className="text-primary-foreground/65">
+                        <span className="block font-medium text-primary-foreground/85">
+                          {k.nom}
+                          {k.poste ? ` — ${k.poste}` : ""}
+                        </span>
+                        {k.email ? (
+                          <a
+                            href={`mailto:${k.email}`}
+                            className="flex items-start gap-2 break-all transition-colors hover:text-primary-foreground"
+                          >
+                            <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
+                            {k.email}
+                          </a>
+                        ) : null}
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>

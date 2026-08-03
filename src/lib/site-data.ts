@@ -5,8 +5,8 @@ import dgNiger from "@/assets/dg-niger.jpg.asset.json";
 import dgTchad from "@/assets/dg-tchad.jpg.asset.json";
 import dgMali from "@/assets/dg-mali.jpg.asset.json";
 import dgRca from "@/assets/dg-rca.jpg.asset.json";
-import dgMauritanie from "@/assets/dg-mauritanie-2.jpg.asset.json";
-import dgNigeria from "@/assets/dg-nigeria.jpg.asset.json";
+import dgMauritanie from "@/assets/dg-mauritanie-3.png.asset.json";
+import dgNigeria from "@/assets/dg-nigeria-2.png.asset.json";
 
 
 export const SITE = {
@@ -55,6 +55,7 @@ export const COUNTRIES: Country[] = [
       {
         nom: "Aboubakar Souaibou",
         poste: "D.A.F.",
+        email: "aboubakar.souaibou@siat-engineering.com",
         telephones: ["(+237) 695 11 43 90", "(+237) 675 17 06 32"],
         photo: aboubakarPhoto.url,
       },
@@ -158,12 +159,12 @@ export const COUNTRIES: Country[] = [
     mapQuery: "Nouakchott, Mauritanie",
     telephones: ["(00222) 45 25 10 20"],
     directeur: "Mohamed Ould Ahmed",
-    emailDirection: "contact@siat-engineering.com",
+    emailDirection: "mohamed.ouldahmed@siat-engineering.com",
     contacts: [
       {
         nom: "Mohamed Ould Ahmed",
         poste: "Directeur Général",
-        email: "contact@siat-engineering.com",
+        email: "mohamed.ouldahmed@siat-engineering.com",
         telephones: ["(00222) 45 25 10 20"],
         photo: dgMauritanie.url,
       },
@@ -543,7 +544,7 @@ import badLogo from "@/assets/partners-bad.png.asset.json";
 import afdLogo from "@/assets/partners-afd.png.asset.json";
 import ueLogo from "@/assets/partners-ue.png.asset.json";
 import cbltLogo from "@/assets/partners-cblt.png.asset.json";
-import cemacLogo from "@/assets/partners-cemac.png.asset.json";
+import cemacLogo from "@/assets/partners-cemac-2.png.asset.json";
 
 export const PARTNERS: Partner[] = [
   { nom: "Banque Africaine de Développement (BAD)", domaine: "afdb.org", logo: badLogo.url },
