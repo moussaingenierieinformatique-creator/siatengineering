@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ShieldCheck, Landmark, Globe2, Download, Check } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 import hero from "@/assets/banniere-siat.jpg.asset.json";
+import hero2 from "@/assets/banniere-siat-2.jpg.asset.json";
 import { SiteLayout, SectionTitle } from "@/components/site/SiteLayout";
 import { RotatingImage } from "@/components/site/RotatingImage";
 import { CHIFFRES, COUNTRIES, DOMAINS, PARTNERS, partnerLogo } from "@/lib/site-data";
