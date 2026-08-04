@@ -76,7 +76,11 @@ export function SectionTitle({
   return (
     <div className="w-full">
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h2 className="section-heading mt-3 text-2xl sm:text-3xl lg:text-4xl">{title}</h2>
+      <h2
+        className={`mt-3 text-2xl sm:text-3xl lg:text-4xl ${light ? "section-heading-light" : "section-heading"}`}
+      >
+        {title}
+      </h2>
       {intro && (
         <p
           className={`text-block mt-5 w-full text-base leading-relaxed ${light ? "text-primary-foreground/80" : "text-foreground"}`}
