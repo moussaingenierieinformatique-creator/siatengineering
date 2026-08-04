@@ -189,20 +189,20 @@ function APropos() {
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   )}
-                  <div className="absolute inset-0 bg-navy-deep/70" aria-hidden="true" />
-                  <div className="relative p-5">
-                    <h3 className="font-display text-lg font-semibold text-primary-foreground">
+                  <div className="absolute inset-0 bg-navy-deep/85" aria-hidden="true" />
+                  <div className="relative p-5 [text-shadow:0_2px_6px_rgba(0,0,0,0.85)]">
+                    <h3 className="font-display text-lg font-bold text-primary-foreground">
                       {c.directeur}
                     </h3>
-                    <p className="mt-1 text-sm text-primary-foreground/85">
+                    <p className="mt-1 text-sm font-semibold text-primary-foreground">
                       Directeur Général — {c.ville}
                     </p>
-                    <p className="mt-2 font-display text-xs uppercase tracking-widest text-primary-foreground/90">
+                    <p className="mt-2 font-display text-xs font-bold uppercase tracking-widest text-primary-foreground">
                       {c.pays}
                     </p>
                     <a
                       href={`mailto:${c.emailDirection}`}
-                      className="mt-3 block break-all text-sm text-primary-foreground underline-offset-4 hover:underline"
+                      className="mt-3 block break-all text-sm font-medium text-primary-foreground underline-offset-4 hover:underline"
                     >
                       {c.emailDirection}
                     </a>
