@@ -117,7 +117,11 @@ function Hero() {
 
   return (
     <section className="relative isolate bg-navy-deep">
-      <div className="relative w-full">
+      <div
+        className={`relative w-full transition-colors duration-700 ${
+          slide === 0 ? "bg-navy-deep" : "bg-white"
+        }`}
+      >
         <img
           src={HERO_SLIDES[0].src}
           alt={HERO_SLIDES[0].alt}
@@ -133,12 +137,13 @@ function Hero() {
             src={s.src}
             alt={s.alt}
             loading="lazy"
-            className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-700 ${
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
               slide === i + 1 ? "opacity-100" : "opacity-0"
             }`}
           />
         ))}
       </div>
+
       <div className="relative mx-auto max-w-7xl px-5 py-14 lg:px-8 lg:py-20">
         <div className="border-b border-primary-foreground/15 pb-10 text-center">
           <h1 className="animate-fade-up text-4xl font-bold leading-[1.05] text-primary-foreground sm:text-5xl lg:text-6xl">
@@ -287,11 +292,8 @@ function Domaines() {
               <li key={d.slug}>
                 <button
                   type="button"
-                  ref={(el) => {
-                    if (el && i === active && !paused)
-                      el.scrollIntoView({ block: "nearest", behavior: "smooth" });
-                  }}
                   onMouseEnter={() => setActive(i)}
+
                   onFocus={() => setActive(i)}
                   onClick={() => setActive(i)}
                   aria-pressed={i === active}
