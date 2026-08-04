@@ -287,6 +287,10 @@ function Domaines() {
               <li key={d.slug}>
                 <button
                   type="button"
+                  ref={(el) => {
+                    if (el && i === active && !paused)
+                      el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+                  }}
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
                   onClick={() => setActive(i)}
