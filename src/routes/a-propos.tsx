@@ -189,20 +189,20 @@ function APropos() {
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   )}
-                  <div className="absolute inset-0 bg-navy-deep/70" aria-hidden="true" />
-                  <div className="relative p-5">
-                    <h3 className="font-display text-lg font-semibold text-primary-foreground">
+                  <div className="absolute inset-0 bg-navy-deep/85" aria-hidden="true" />
+                  <div className="relative p-5 [text-shadow:0_2px_6px_rgba(0,0,0,0.85)]">
+                    <h3 className="font-display text-lg font-bold text-primary-foreground">
                       {c.directeur}
                     </h3>
-                    <p className="mt-1 text-sm text-primary-foreground/85">
+                    <p className="mt-1 text-sm font-semibold text-primary-foreground">
                       Directeur Général — {c.ville}
                     </p>
-                    <p className="mt-2 font-display text-xs uppercase tracking-widest text-primary-foreground/90">
+                    <p className="mt-2 font-display text-xs font-bold uppercase tracking-widest text-primary-foreground">
                       {c.pays}
                     </p>
                     <a
                       href={`mailto:${c.emailDirection}`}
-                      className="mt-3 block break-all text-sm text-primary-foreground underline-offset-4 hover:underline"
+                      className="mt-3 block break-all text-sm font-medium text-primary-foreground underline-offset-4 hover:underline"
                     >
                       {c.emailDirection}
                     </a>
@@ -226,6 +226,48 @@ function APropos() {
             );
           })}
         </div>
+
+        {/* Bande récapitulative : chaque pays avec la tête de son DG qui « sort » du drapeau */}
+        <div className="mt-16 rounded-sm border border-border bg-surface p-8">
+          <p className="eyebrow">Nos implantations</p>
+          <h3 className="mt-2 font-display text-xl font-bold text-primary">
+            Tous les pays où le Groupe SIAT-Engineering est présent
+          </h3>
+          <div className="mt-14 grid grid-cols-2 gap-x-5 gap-y-14 sm:grid-cols-4 lg:grid-cols-7">
+            {COUNTRIES.map((c) => {
+              const portrait = c.contacts.find((k) => k.photo)?.photo;
+              const flag = flagOf(c.pays);
+              return (
+                <div key={`strip-${c.pays}`} className="flex flex-col items-center text-center">
+                  <div className="relative w-full">
+                    {flag && (
+                      <img
+                        src={flag}
+                        alt={`Drapeau ${c.pays}`}
+                        loading="lazy"
+                        className="h-16 w-full rounded-sm object-cover shadow-[var(--shadow-card)]"
+                      />
+                    )}
+                    {portrait && (
+                      <img
+                        src={portrait}
+                        alt={`${c.directeur} — Directeur ${c.pays}`}
+                        loading="lazy"
+                        className="absolute -top-10 left-1/2 h-20 w-20 -translate-x-1/2 rounded-full border-4 border-card object-cover object-[center_20%] shadow-[var(--shadow-lift)]"
+                      />
+                    )}
+                  </div>
+                  <p className="mt-3 font-display text-xs font-bold uppercase tracking-widest text-primary">
+                    {c.pays}
+                  </p>
+                  <p className="text-xs text-muted-foreground">{c.directeur}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+
 
         <Link
           to="/savoir-faire"

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ShieldCheck, Landmark, Globe2, Download, Check } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 import hero from "@/assets/banniere-siat.jpg.asset.json";
+import hero2 from "@/assets/banniere-siat-2.jpg.asset.json";
 import { SiteLayout, SectionTitle } from "@/components/site/SiteLayout";
 import { RotatingImage } from "@/components/site/RotatingImage";
 import { CHIFFRES, COUNTRIES, DOMAINS, PARTNERS, partnerLogo } from "@/lib/site-data";
@@ -96,16 +97,48 @@ function Accueil() {
   );
 }
 
+const HERO_SLIDES = [
+  {
+    src: hero.url,
+    alt: "Équipes d'ingénieurs SIAT-Engineering en réunion d'études et en supervision de chantier",
+  },
+  {
+    src: hero2.url,
+    alt: "Prestations du Groupe SIAT-Engineering : bâtiments, routes & VRD, ouvrages d'art et ingénierie durable",
+  },
+];
+
 function Hero() {
+  const [slide, setSlide] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setSlide((s) => (s + 1) % HERO_SLIDES.length), 2000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <section className="relative isolate bg-navy-deep">
-      <img
-        src={hero.url}
-        alt="Équipes d'ingénieurs SIAT-Engineering en réunion d'études et en supervision de chantier"
-        width={1920}
-        height={1088}
-        className="block h-auto w-full object-contain"
-      />
+      <div className="relative w-full">
+        <img
+          src={HERO_SLIDES[0].src}
+          alt={HERO_SLIDES[0].alt}
+          width={1920}
+          height={1088}
+          className={`block h-auto w-full object-contain transition-opacity duration-700 ${
+            slide === 0 ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        {HERO_SLIDES.slice(1).map((s, i) => (
+          <img
+            key={s.src}
+            src={s.src}
+            alt={s.alt}
+            loading="lazy"
+            className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-700 ${
+              slide === i + 1 ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+      </div>
       <div className="relative mx-auto max-w-7xl px-5 py-14 lg:px-8 lg:py-20">
         <div className="border-b border-primary-foreground/15 pb-10 text-center">
           <h1 className="animate-fade-up text-4xl font-bold leading-[1.05] text-primary-foreground sm:text-5xl lg:text-6xl">
@@ -224,8 +257,16 @@ function Groupe() {
 
 function Domaines() {
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
   const domain = DOMAINS[active];
   const images = domain.images.map((n) => photo(n)).filter(Boolean);
+
+  // Défilement automatique de tous les domaines, à tour de rôle.
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setActive((i) => (i + 1) % DOMAINS.length), 4000);
+    return () => clearInterval(id);
+  }, [paused]);
 
   return (
     <section className="bg-surface py-24">
@@ -236,12 +277,20 @@ function Domaines() {
           intro="L'expertise de Groupe SIAT-Engineering couvre la création, la conception, la modernisation des infrastructures modernes. Ils se développent sur la base des méthodes de calcul spécifiques et des règlements les plus récents, en tenant compte des techniques d'exécution les plus appropriées."
         />
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[22rem_1fr]">
+        <div
+          className="mt-12 grid gap-8 lg:grid-cols-[22rem_1fr]"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
           <ul className="max-h-[34rem] space-y-1 overflow-y-auto pr-1">
             {DOMAINS.map((d, i) => (
               <li key={d.slug}>
                 <button
                   type="button"
+                  ref={(el) => {
+                    if (el && i === active && !paused)
+                      el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+                  }}
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
                   onClick={() => setActive(i)}
