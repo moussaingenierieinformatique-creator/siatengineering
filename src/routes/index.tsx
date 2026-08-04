@@ -96,16 +96,48 @@ function Accueil() {
   );
 }
 
+const HERO_SLIDES = [
+  {
+    src: hero.url,
+    alt: "Équipes d'ingénieurs SIAT-Engineering en réunion d'études et en supervision de chantier",
+  },
+  {
+    src: hero2.url,
+    alt: "Prestations du Groupe SIAT-Engineering : bâtiments, routes & VRD, ouvrages d'art et ingénierie durable",
+  },
+];
+
 function Hero() {
+  const [slide, setSlide] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setSlide((s) => (s + 1) % HERO_SLIDES.length), 2000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <section className="relative isolate bg-navy-deep">
-      <img
-        src={hero.url}
-        alt="Équipes d'ingénieurs SIAT-Engineering en réunion d'études et en supervision de chantier"
-        width={1920}
-        height={1088}
-        className="block h-auto w-full object-contain"
-      />
+      <div className="relative w-full">
+        <img
+          src={HERO_SLIDES[0].src}
+          alt={HERO_SLIDES[0].alt}
+          width={1920}
+          height={1088}
+          className={`block h-auto w-full object-contain transition-opacity duration-700 ${
+            slide === 0 ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        {HERO_SLIDES.slice(1).map((s, i) => (
+          <img
+            key={s.src}
+            src={s.src}
+            alt={s.alt}
+            loading="lazy"
+            className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-700 ${
+              slide === i + 1 ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+      </div>
       <div className="relative mx-auto max-w-7xl px-5 py-14 lg:px-8 lg:py-20">
         <div className="border-b border-primary-foreground/15 pb-10 text-center">
           <h1 className="animate-fade-up text-4xl font-bold leading-[1.05] text-primary-foreground sm:text-5xl lg:text-6xl">
