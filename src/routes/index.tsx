@@ -116,12 +116,12 @@ function Hero() {
   }, []);
 
   return (
-    <section
-      className={`relative isolate transition-colors duration-700 ${
-        slide === 0 ? "bg-navy-deep" : "bg-white"
-      }`}
-    >
-      <div className="relative w-full">
+    <section className="relative isolate bg-navy-deep">
+      <div
+        className={`relative w-full transition-colors duration-700 ${
+          slide === 0 ? "bg-navy-deep" : "bg-white"
+        }`}
+      >
         <img
           src={HERO_SLIDES[0].src}
           alt={HERO_SLIDES[0].alt}
