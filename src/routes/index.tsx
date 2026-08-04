@@ -257,8 +257,16 @@ function Groupe() {
 
 function Domaines() {
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
   const domain = DOMAINS[active];
   const images = domain.images.map((n) => photo(n)).filter(Boolean);
+
+  // Défilement automatique de tous les domaines, à tour de rôle.
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setActive((i) => (i + 1) % DOMAINS.length), 4000);
+    return () => clearInterval(id);
+  }, [paused]);
 
   return (
     <section className="bg-surface py-24">
@@ -269,7 +277,11 @@ function Domaines() {
           intro="L'expertise de Groupe SIAT-Engineering couvre la création, la conception, la modernisation des infrastructures modernes. Ils se développent sur la base des méthodes de calcul spécifiques et des règlements les plus récents, en tenant compte des techniques d'exécution les plus appropriées."
         />
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[22rem_1fr]">
+        <div
+          className="mt-12 grid gap-8 lg:grid-cols-[22rem_1fr]"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
           <ul className="max-h-[34rem] space-y-1 overflow-y-auto pr-1">
             {DOMAINS.map((d, i) => (
               <li key={d.slug}>
