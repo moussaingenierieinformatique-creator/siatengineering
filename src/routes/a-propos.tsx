@@ -153,7 +153,7 @@ function APropos() {
 
       <section className="surface-navy py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionTitle eyebrow="2.4 Nos valeurs" title="Ce qui guide nos engagements" light />
+          <SectionTitle eyebrow="2.4 Nos valeurs" title="Nos engagements" light />
           <ol className="mt-12 grid gap-px bg-primary-foreground/15 sm:grid-cols-2">
             {VALEURS.map((v, i) => (
               <li key={v} className="bg-navy-deep p-8">
