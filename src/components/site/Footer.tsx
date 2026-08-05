@@ -80,31 +80,61 @@ export function Footer() {
             <h3 className="font-display text-sm font-semibold uppercase tracking-widest text-primary-foreground">
               Nos implantations
             </h3>
-            <ul className="mt-5 grid gap-5 sm:grid-cols-2">
+            <ul className="mt-5 grid gap-4 sm:grid-cols-2">
               {COUNTRIES.map((c) => (
-                <li key={c.pays} className="text-sm">
-                  <p className="font-display font-semibold text-primary-foreground">{c.pays}</p>
-                  <p className="mt-1 flex items-start gap-2 text-primary-foreground/65">
-                    <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
-                    {c.ville} — {c.statut}
-                  </p>
-                  <p className="mt-1 flex items-start gap-2 text-primary-foreground/65">
-                    <Phone className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
-                    <span>{c.telephones.join(" · ")}</span>
-                  </p>
-                  <ul className="mt-2 space-y-1.5">
+                <li
+                  key={c.pays}
+                  className="rounded-sm border border-primary-foreground/15 bg-primary-foreground/[0.04] p-4"
+                >
+                  <div className="flex items-center gap-3 border-b border-primary-foreground/15 pb-3">
+                    {flagOf(c.pays) && (
+                      <img
+                        src={flagOf(c.pays)}
+                        alt={`Drapeau ${c.pays}`}
+                        loading="lazy"
+                        className="h-6 w-9 shrink-0 rounded-[2px] object-cover"
+                      />
+                    )}
+                    <div className="min-w-0">
+                      <p className="font-display text-sm font-bold uppercase tracking-wide text-primary-foreground">
+                        {c.pays}
+                      </p>
+                      <p className="text-xs text-accent">{c.statut}</p>
+                    </div>
+                  </div>
+
+                  <dl className="mt-3 space-y-1.5 text-xs text-primary-foreground/70">
+                    <div className="flex items-start gap-2">
+                      <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
+                      <dd>{c.ville}</dd>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Phone className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
+                      <dd className="space-y-0.5">
+                        {c.telephones.map((t) => (
+                          <span key={t} className="block">
+                            {t}
+                          </span>
+                        ))}
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <ul className="mt-3 space-y-2 border-t border-primary-foreground/10 pt-3">
                     {c.contacts.map((k) => (
-                      <li key={k.nom} className="text-primary-foreground/65">
-                        <span className="block font-medium text-primary-foreground/85">
+                      <li key={k.nom} className="text-xs">
+                        <p className="font-display font-semibold text-primary-foreground">
                           {k.nom}
-                          {k.poste ? ` — ${k.poste}` : ""}
-                        </span>
+                        </p>
+                        {k.poste ? (
+                          <p className="text-primary-foreground/55">{k.poste}</p>
+                        ) : null}
                         {k.email ? (
                           <a
                             href={`mailto:${k.email}`}
-                            className="flex items-start gap-2 break-all transition-colors hover:text-primary-foreground"
+                            className="mt-0.5 flex items-start gap-1.5 break-all text-primary-foreground/70 transition-colors hover:text-primary-foreground"
                           >
-                            <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
+                            <Mail className="mt-0.5 h-3 w-3 shrink-0 text-accent" />
                             {k.email}
                           </a>
                         ) : null}
@@ -121,6 +151,7 @@ export function Footer() {
               </a>
             </p>
           </div>
+
         </div>
 
         <div className="mt-14 flex flex-col gap-2 border-t border-primary-foreground/15 pt-6 text-xs text-primary-foreground/55 sm:flex-row sm:items-center sm:justify-between">
