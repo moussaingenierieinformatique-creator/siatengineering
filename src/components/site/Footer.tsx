@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone, Linkedin, Facebook } from "lucide-react";
 import logo from "@/assets/logo-siat.jpg.asset.json";
 import { COUNTRIES, DOMAINS, SITE } from "@/lib/site-data";
+import { flagOf } from "@/lib/flags";
+
 
 export function Footer() {
   return (
