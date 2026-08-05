@@ -231,7 +231,7 @@ function APropos() {
         <div className="mt-16 rounded-sm border border-border bg-surface p-8">
           <p className="eyebrow">Nos implantations</p>
           <h3 className="mt-2 font-display text-xl font-bold text-primary">
-            Votre présence en Afrique
+            Notre présence en Afrique
           </h3>
 
           <div className="mt-14 grid grid-cols-2 gap-x-5 gap-y-14 sm:grid-cols-4 lg:grid-cols-7">
