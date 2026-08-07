@@ -205,7 +205,8 @@ function Contact() {
                               <span>{p.telephones.join(" / ")}</span>
                             </p>
                             <p className="flex items-start gap-2 text-sm text-primary-foreground/85">
-                              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" /> {c.ville}
+                              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                              <span>{c.adresses?.length ? c.adresses.join(" · ") : c.ville}</span>
                             </p>
                           </div>
                         </div>
