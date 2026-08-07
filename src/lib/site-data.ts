@@ -32,6 +32,7 @@ export type Country = {
   directeur?: string;
   emailDirection?: string;
   mapQuery: string;
+  adresses?: string[];
   contacts: Contact[];
 };
 
@@ -41,6 +42,7 @@ export const COUNTRIES: Country[] = [
     statut: "Siège social",
     ville: "Garoua",
     mapQuery: "Garoua, Cameroun",
+    adresses: ["Garoua, Cameroun (siège social)", "BP 1078 Douala - Akwa"],
     telephones: ["(00237) 691 83 50 89", "(00237) 675 49 39 89", "(00237) 695 11 43 90"],
     directeur: "Ntock Patrick",
     emailDirection: "patrick.ntock@siat-engineering.com",
