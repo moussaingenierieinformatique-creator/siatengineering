@@ -478,10 +478,13 @@ function Ressources() {
             organisation et domaines d'intervention.
           </p>
           <a
-            href="#"
+            href="/presentation-groupe-siat-engineering.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="Presentation-Groupe-SIAT-Engineering.pdf"
             className="mt-6 inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
-            <Download className="h-4 w-4" /> Télécharger notre présentation
+            <Download className="h-4 w-4" /> Télécharger notre présentation (PDF)
           </a>
         </div>
         <div className="rule-accent">
