@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "groupe-siat",
+      "version": "0.1.0",
+      "title": "GROUPE SIAT"
+    },
+    "tools": [
+      {
+        "name": "get_company_profile",
+        "title": "Profil de l'entreprise",
+        "description": "Renvoie la présentation publique de Groupe SIAT-Engineering : identité, chiffres clés, engagements et partenaires.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_offices",
+        "title": "Lister les implantations",
+        "description": "Liste les implantations publiques de Groupe SIAT-Engineering (pays, ville, statut, téléphones, direction et contacts publics).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "pays": {
+              "description": "Filtre optionnel sur le nom du pays, par exemple 'Cameroun'.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_expertise_domains",
+        "title": "Lister les domaines d'expertise",
+        "description": "Liste les 12 domaines d'expertise de Groupe SIAT-Engineering (numéro, slug, titre, accroche).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "recherche": {
+              "description": "Filtre optionnel par mot-clé sur le titre ou l'accroche.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_expertise_domain",
+        "title": "Détail d'un domaine d'expertise",
+        "description": "Renvoie le détail complet d'un domaine d'expertise (titre, accroche et étapes) à partir de son slug ou de son numéro.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "description": "Slug du domaine, par exemple 'etudes-techniques', ou son numéro (1 à 12)."
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
