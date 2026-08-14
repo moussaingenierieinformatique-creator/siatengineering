@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as MerciRouteImport } from './routes/merci'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CarriereRouteImport } from './routes/carriere'
@@ -24,6 +25,11 @@ import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerciRoute = MerciRouteImport.update({
+  id: '/merci',
+  path: '/merci',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -86,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/carriere': typeof CarriereRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
+  '/merci': typeof MerciRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByTo {
   '/carriere': typeof CarriereRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
+  '/merci': typeof MerciRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -113,6 +121,7 @@ export interface FileRoutesById {
   '/carriere': typeof CarriereRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
+  '/merci': typeof MerciRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -128,6 +137,7 @@ export interface FileRouteTypes {
     | '/carriere'
     | '/contact'
     | '/mcp'
+    | '/merci'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -141,6 +151,7 @@ export interface FileRouteTypes {
     | '/carriere'
     | '/contact'
     | '/mcp'
+    | '/merci'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -154,6 +165,7 @@ export interface FileRouteTypes {
     | '/carriere'
     | '/contact'
     | '/mcp'
+    | '/merci'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -168,6 +180,7 @@ export interface RootRouteChildren {
   CarriereRoute: typeof CarriereRoute
   ContactRoute: typeof ContactRoute
   McpRoute: typeof McpRoute
+  MerciRoute: typeof MerciRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -183,6 +196,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merci': {
+      id: '/merci'
+      path: '/merci'
+      fullPath: '/merci'
+      preLoaderRoute: typeof MerciRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -264,6 +284,7 @@ const rootRouteChildren: RootRouteChildren = {
   CarriereRoute: CarriereRoute,
   ContactRoute: ContactRoute,
   McpRoute: McpRoute,
+  MerciRoute: MerciRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
