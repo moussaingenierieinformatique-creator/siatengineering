@@ -35,7 +35,7 @@ function SavoirFaire() {
         eyebrow="Nos savoir-faire"
         title="12 domaines d'expertise"
         intro="De l'étude préalable à la réception des ouvrages, une maîtrise complète du cycle de projet."
-        image={photo("img_p8_5")}
+        image={photo("img_p8_7")}
       />
       <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
