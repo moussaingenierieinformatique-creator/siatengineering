@@ -274,7 +274,7 @@ export const DOMAINS: Domain[] = [
         texte: "Inspection finale et réception des ouvrages.",
       },
     ],
-    images: ["img_p8_5", "img_p8_6", "img_p8_7", "img_p8_8"],
+    images: ["img_p8_6", "img_p8_7", "img_p8_8"],
   },
   {
     slug: "ouvrages-de-franchissement",
