@@ -1,6 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { Check, Upload } from "lucide-react";
+import { Upload } from "lucide-react";
 import { SiteLayout, PageHero, SectionTitle } from "@/components/site/SiteLayout";
 import { photo } from "@/lib/photos";
 
@@ -30,12 +30,14 @@ const inputClass =
   "w-full rounded-sm border border-input bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-accent";
 
 function Carriere() {
-  const [sent, setSent] = useState(false);
+  const navigate = useNavigate();
+  const [consent, setConsent] = useState(false);
 
   function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+    if (!consent) return;
     e.currentTarget.reset();
+    void navigate({ to: "/merci", search: { type: "candidature" } });
   }
 
   return (
@@ -97,18 +99,29 @@ function Carriere() {
                 </label>
                 <textarea id="c-lm" name="motivation" rows={6} required className={inputClass} />
               </div>
+              <div className="flex items-start gap-3">
+                <input
+                  id="c-consent"
+                  name="consent"
+                  type="checkbox"
+                  required
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                  className="mt-1 h-4 w-4 shrink-0 accent-[hsl(var(--accent))]"
+                />
+                <label htmlFor="c-consent" className="text-sm leading-relaxed text-muted-foreground">
+                  J'accepte que mon CV et mes données personnelles soient conservés par le Groupe
+                  SIAT-Engineering aux seules fins du traitement de ma candidature. Je peux demander
+                  leur suppression à tout moment.
+                </label>
+              </div>
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 rounded-sm bg-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90"
+                disabled={!consent}
+                className="inline-flex items-center gap-2 rounded-sm bg-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Envoyer ma candidature <Upload className="h-4 w-4" />
               </button>
-              {sent && (
-                <p className="inline-flex items-center gap-2 text-sm text-primary">
-                  <Check className="h-4 w-4 text-accent" /> Merci, votre candidature a bien été
-                  enregistrée.
-                </p>
-              )}
             </form>
           </div>
           <div className="space-y-4">

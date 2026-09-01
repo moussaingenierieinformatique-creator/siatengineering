@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ShieldCheck, Landmark, Globe2, Download, Check } from "lucide-react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { ArrowRight, ShieldCheck, Landmark, Globe2, Download } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 import hero from "@/assets/banniere-siat.jpg.asset.json";
 import { SiteLayout, SectionTitle } from "@/components/site/SiteLayout";
@@ -458,14 +458,16 @@ function Reassurance() {
 }
 
 function Ressources() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [done, setDone] = useState(false);
+  const [consent, setConsent] = useState(false);
 
   function submit(e: FormEvent) {
     e.preventDefault();
-    if (!email) return;
-    setDone(true);
+    if (!email || !consent) return;
     setEmail("");
+    setConsent(false);
+    void navigate({ to: "/merci", search: { type: "newsletter" } });
   }
 
   return (
@@ -492,27 +494,40 @@ function Ressources() {
           <p className="text-block mt-3 text-sm leading-relaxed text-muted-foreground">
             Recevez nos actualités projets et appels à candidatures.
           </p>
-          <form onSubmit={submit} className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="votre.email@exemple.com"
-              className="flex-1 rounded-sm border border-input bg-background px-4 py-3.5 text-sm outline-none focus:border-accent"
-            />
-            <button
-              type="submit"
-              className="rounded-sm bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90"
-            >
-              S'inscrire
-            </button>
+          <form onSubmit={submit} className="mt-6 space-y-3">
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="votre.email@exemple.com"
+                className="flex-1 rounded-sm border border-input bg-background px-4 py-3.5 text-sm outline-none focus:border-accent"
+              />
+              <button
+                type="submit"
+                disabled={!consent}
+                className="rounded-sm bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                S'inscrire
+              </button>
+            </div>
+            <div className="flex items-start gap-3">
+              <input
+                id="nl-consent"
+                name="consent"
+                type="checkbox"
+                required
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                className="mt-1 h-4 w-4 shrink-0 accent-[hsl(var(--accent))]"
+              />
+              <label htmlFor="nl-consent" className="text-xs leading-relaxed text-muted-foreground">
+                J'accepte de recevoir la newsletter du Groupe SIAT-Engineering. Mon adresse email
+                n'est utilisée que pour cet envoi et je peux me désinscrire à tout moment.
+              </label>
+            </div>
           </form>
-          {done && (
-            <p className="mt-3 inline-flex items-center gap-2 text-sm text-primary">
-              <Check className="h-4 w-4 text-accent" /> Merci, votre inscription est enregistrée.
-            </p>
-          )}
         </div>
       </div>
     </section>
