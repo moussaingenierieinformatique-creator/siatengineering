@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone, Linkedin, Facebook } from "lucide-react";
 import logo from "@/assets/logo-siat.jpg.asset.json";
 import { COUNTRIES, DOMAINS, SITE } from "@/lib/site-data";
 import { flagOf } from "@/lib/flags";
+import { telHref } from "@/lib/utils";
 
 
 export function Footer() {
@@ -162,7 +163,6 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col gap-2 border-t border-primary-foreground/15 pt-6 text-xs text-primary-foreground/55 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Groupe SIAT-Engineering — SARL. Tous droits réservés.</p>
-          <p>RCCM : à compléter · Siège social : Garoua, Cameroun</p>
         </div>
       </div>
     </footer>
