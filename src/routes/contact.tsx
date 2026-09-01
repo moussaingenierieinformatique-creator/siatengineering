@@ -1,10 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { Mail, MapPin, Phone, Send, Check, Navigation, ChevronDown } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Navigation, ChevronDown } from "lucide-react";
 import { SiteLayout, PageHero, SectionTitle } from "@/components/site/SiteLayout";
 import { AfricaPresenceMap } from "@/components/site/AfricaPresenceMap";
 import { COUNTRIES, SITE } from "@/lib/site-data";
 import { photo } from "@/lib/photos";
+import { telHref } from "@/lib/utils";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
@@ -42,13 +43,14 @@ const FLAGS: Record<string, string> = {
 };
 
 function Contact() {
-  const [sent, setSent] = useState(false);
-  
+  const navigate = useNavigate();
+  const [consent, setConsent] = useState(false);
 
   function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+    if (!consent) return;
     e.currentTarget.reset();
+    void navigate({ to: "/merci", search: { type: "contact" } });
   }
 
   return (
@@ -97,18 +99,29 @@ function Contact() {
                 </label>
                 <textarea id="message" name="message" rows={6} required className={inputClass} />
               </div>
+              <div className="flex items-start gap-3">
+                <input
+                  id="consent"
+                  name="consent"
+                  type="checkbox"
+                  required
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                  className="mt-1 h-4 w-4 shrink-0 accent-[hsl(var(--accent))]"
+                />
+                <label htmlFor="consent" className="text-sm leading-relaxed text-muted-foreground">
+                  J'accepte que les informations transmises soient utilisées uniquement pour traiter
+                  ma demande, conformément à la politique de confidentialité du Groupe
+                  SIAT-Engineering. Aucune donnée n'est cédée à des tiers.
+                </label>
+              </div>
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 rounded-sm bg-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90"
+                disabled={!consent}
+                className="inline-flex items-center gap-2 rounded-sm bg-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Envoyer le message <Send className="h-4 w-4" />
               </button>
-              {sent && (
-                <p className="inline-flex items-center gap-2 text-sm text-primary">
-                  <Check className="h-4 w-4 text-accent" /> Merci, votre message a bien été pris en
-                  compte. Nous revenons vers vous sous 48 heures.
-                </p>
-              )}
             </form>
 
             <div className="mt-10">
@@ -202,7 +215,13 @@ function Contact() {
                             )}
                             <p className="flex items-start gap-2 text-sm text-primary-foreground/85">
                               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                              <span>{p.telephones.join(" / ")}</span>
+                              <span className="flex flex-wrap gap-x-2">
+                                {p.telephones.map((t) => (
+                                  <a key={t} href={telHref(t)} className="hover:text-accent">
+                                    {t}
+                                  </a>
+                                ))}
+                              </span>
                             </p>
                             <p className="flex items-start gap-2 text-sm text-primary-foreground/85">
                               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
