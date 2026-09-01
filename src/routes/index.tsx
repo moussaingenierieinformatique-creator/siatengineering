@@ -383,21 +383,21 @@ function Partenaires() {
         Ils nous font confiance
       </h2>
       <div className="mt-10 overflow-hidden">
-        <div className="animate-marquee flex w-max items-stretch gap-6">
+        <div className="animate-marquee flex w-max items-center gap-14">
           {list.map((p, i) => {
             const logo = partnerLogo(p);
             return (
               <span
                 key={`${p.nom}-${i}`}
-                className="flex min-w-[15rem] flex-col items-center justify-start gap-4 rounded-sm border border-border bg-surface px-6 py-6 text-center"
+                className="flex h-32 min-w-[13rem] items-center justify-center"
               >
-                {logo && (
+                {logo ? (
                   <img
                     src={logo}
                     alt={`Logo ${p.nom}`}
                     loading="lazy"
-                    width={128}
-                    height={96}
+                    width={256}
+                    height={128}
                     onError={(e) => {
                       const el = e.currentTarget;
                       if (p.domaine && !el.dataset.fallback) {
@@ -405,12 +405,13 @@ function Partenaires() {
                         el.src = `https://www.google.com/s2/favicons?domain=${p.domaine}&sz=256`;
                       }
                     }}
-                    className="h-24 w-32 shrink-0 rounded-sm bg-background object-contain p-2"
+                    className="h-full max-h-32 w-auto max-w-[16rem] object-contain"
                   />
+                ) : (
+                  <span className="max-w-[13rem] text-center font-display text-base font-semibold leading-snug text-primary">
+                    {p.nom}
+                  </span>
                 )}
-                <span className="max-w-[13rem] font-display text-sm font-semibold leading-snug text-primary">
-                  {p.nom}
-                </span>
               </span>
             );
           })}
