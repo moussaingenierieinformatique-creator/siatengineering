@@ -114,9 +114,13 @@ export function Footer() {
                       <Phone className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
                       <dd className="space-y-0.5">
                         {c.telephones.map((t) => (
-                          <span key={t} className="block">
+                          <a
+                            key={t}
+                            href={telHref(t)}
+                            className="block transition-colors hover:text-primary-foreground"
+                          >
                             {t}
-                          </span>
+                          </a>
                         ))}
                       </dd>
                     </div>
