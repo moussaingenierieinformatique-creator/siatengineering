@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ArrowRight, ShieldCheck, Landmark, Globe2, Download, Check } from "lucide-react";
+import { ArrowRight, ShieldCheck, Landmark, Globe2, Download } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 import hero from "@/assets/banniere-siat.jpg.asset.json";
 import { SiteLayout, SectionTitle } from "@/components/site/SiteLayout";
