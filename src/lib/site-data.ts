@@ -175,362 +175,380 @@ export const COUNTRIES: Country[] = [
 ];
 
 
+export type DomainSection = {
+  titre: string;
+  prestations: string[];
+};
+
+export type DomainLink = {
+  slug: string;
+  titre: string;
+};
+
 export type Domain = {
   slug: string;
   numero: number;
   titre: string;
   accroche: string;
-  etapes: { titre: string; texte: string }[];
+  sections: DomainSection[];
   images: string[];
+  sousDomaines?: DomainLink[];
 };
+
+const HYDRAULIQUE_LINKS: DomainLink[] = [
+  { slug: "hydraulique-urbaine-aep-assainissement", titre: "Hydraulique urbaine AEP et assainissement" },
+  { slug: "hydraulique-rurale-villageoise", titre: "Hydraulique rurale et villageoise" },
+  { slug: "hydraulique-agricole-irrigation", titre: "Hydraulique agricole et irrigation" },
+  { slug: "hydraulique-fluviale", titre: "Hydraulique fluviale" },
+];
 
 export const DOMAINS: Domain[] = [
   {
     slug: "etudes-techniques",
     numero: 1,
-    titre: "Études Techniques",
-    accroche:
-      "De l'étude préalable à la réception des travaux, une maîtrise complète du cycle de projet.",
-    etapes: [
-      {
-        titre: "Étude préalable et diagnostic",
-        texte: "Collecte des données, rédaction du cahier des charges.",
-      },
-      {
-        titre: "Consultation et passation des marchés",
-        texte:
-          "Lancement des appels d'offres, finalisation des contrats, validation des documents, planification opérationnelle, installation de chantier.",
-      },
-      {
-        titre: "Direction et suivi des travaux",
-        texte: "Pilotage et coordination, contrôle qualité et financier, gestion des délais.",
-      },
-      {
-        titre: "Réception et clôture",
-        texte:
-          "Opérations préalables à la réception (OPR), levée des réserves et réception, clôture administrative.",
-      },
-    ],
+    titre: "Études techniques",
+    accroche: "Des études préliminaires au dossier de consultation des entreprises.",
+    sections: [{
+      titre: "Études techniques",
+      prestations: [
+        "Études préliminaires de projet",
+        "Études d'Avant-Projet-Détaillé",
+        "Études d'exécutions",
+        "Dossier de consultation des entreprises",
+      ],
+    }],
     images: ["img_p7_1", "img_p7_2", "img_p7_3", "img_p7_4"],
   },
   {
     slug: "assistance-technique",
     numero: 2,
-    titre: "Assistance Technique",
-    accroche: "Un appui technique à chaque étape, du cadrage du besoin à la réception des travaux.",
-    etapes: [
-      {
-        titre: "Analyse et cadrage du besoin",
-        texte: "Diagnostic, définition des objectifs, Termes de Référence (TDR).",
-      },
-      {
-        titre: "Études préliminaires et de faisabilité",
-        texte: "Études techniques et environnementales, évaluation budgétaire.",
-      },
-      {
-        titre: "Planification opérationnelle",
-        texte: "Découpage des tâches, chronogramme, plan de gestion des risques.",
-      },
-      {
-        titre: "Planification des procédures et passation des marchés",
-        texte:
-          "Dossier de Consultation des Entreprises (DCE), processus d'appel d'offres, assistance au choix des entreprises.",
-      },
-      {
-        titre: "Préparation de l'exécution",
-        texte:
-          "Mise en place des outils de suivi, plan de communication, audit technique et organisationnel, manuel de gestion des ouvrages et équipements.",
-      },
-      {
-        titre: "Analyse et capital humain",
-        texte:
-          "Sélection des experts, attribution des rôles, pilotage, supervision, contrôle des travaux et réception des travaux.",
-      },
-    ],
+    titre: "Assistance technique",
+    accroche: "Maîtrise d'œuvre, supervision, audit et réception des travaux.",
+    sections: [{
+      titre: "Assistance technique",
+      prestations: [
+        "Maîtrise d'œuvre d'exécution",
+        "Assistance au choix des entreprises",
+        "Pilotage, supervision et contrôle des travaux",
+        "Audit technique et organisationnelle",
+        "Réception des travaux",
+        "Élaboration du manuel de gestion des ouvrages et équipements",
+      ],
+    }],
     images: ["img_p8_1", "img_p8_2", "img_p8_3", "img_p8_4"],
   },
   {
-    slug: "infrastructures-de-transports",
+    slug: "infrastructures-de-transport",
     numero: 3,
-    titre: "Infrastructures de Transports",
-    accroche: "Routes, ouvrages d'art et pistes rurales : de la planification à la mise en service.",
-    etapes: [
-      {
-        titre: "Planification et études d'opportunité",
-        texte:
-          "Identification des besoins de mobilité et de développement socio-économique, études de faisabilité géotechniques, environnementales et économiques.",
-      },
-      {
-        titre: "Conception et études détaillées",
-        texte:
-          "Tracés, profils, dimensionnement des chaussées et des ouvrages, pièces écrites et plans d'exécution.",
-      },
-      {
-        titre: "Passation des marchés et travaux",
-        texte: "Assistance aux maîtres d'ouvrage au choix des entreprises.",
-      },
-      {
-        titre: "Réception et mise en service",
-        texte: "Inspection finale et réception des ouvrages.",
-      },
-    ],
-    images: ["img_p8_6", "img_p8_7", "img_p8_8"],
+    titre: "Infrastructures de transport",
+    accroche: "Étude, conception et supervision des routes et ouvrages d'art.",
+    sections: [{
+      titre: "Transports",
+      prestations: [
+        "Étude et conception des routes et ouvrages d'arts",
+        "Détermination des caractéristiques topographiques et géotechniques",
+        "Études hydrologiques et hydrauliques",
+        "Identification et optimisation des tracés",
+        "Études topographiques et aménagements routiers",
+        "Élargissement des chaussées, étude de renforcement des structures et chaussées",
+        "Aménagement des carrefours",
+        "Étude du trafic routier",
+        "Élaboration de dossier de consultation des entreprises",
+        "Supervision et contrôle des travaux",
+      ],
+    }],
+    images: ["img_p8_6", "img_p8_7", "img_p8_8", "img_p9_1"],
   },
   {
-    slug: "ouvrages-de-franchissement",
+    slug: "batiments-travaux-publics",
     numero: 4,
-    titre: "Infrastructures des Ouvrages de Franchissement",
-    accroche: "Ponts et ouvrages d'art : une ingénierie de précision, du sol à la structure.",
-    etapes: [
-      {
-        titre: "Études préliminaires et reconnaissance du site",
-        texte:
-          "Levé et délimitation du site, profils en long et en travers, campagnes de reconnaissance du sol.",
-      },
-      {
-        titre: "Études hydrologiques et hydrauliques",
-        texte: "Délimitation du bassin versant, calcul des débits de crue.",
-      },
-      {
-        titre: "Choix et conception de l'ouvrage",
-        texte:
-          "Sélection de la solution technique, études de variantes, prédimensionnement, modélisation numérique.",
-      },
-      {
-        titre: "Calculs justificatifs",
-        texte:
-          "Vérification de la résistance des matériaux et de la stabilité globale, calcul du ferraillage.",
-      },
-      {
-        titre: "Dossier de consultation",
-        texte: "Établissement des plans détaillés et rédaction des pièces écrites.",
-      },
-    ],
-    images: ["img_p9_1", "img_p9_2", "img_p9_3", "img_p9_4"],
-  },
-  {
-    slug: "infrastructures-des-batiments",
-    numero: 5,
-    titre: "Infrastructures des Bâtiments",
-    accroche:
-      "Édifices publics, logements et équipements : une conception jusqu'au moindre détail technique.",
-    etapes: [
-      {
-        titre: "Étude de faisabilité et programmation",
-        texte: "Analyse des besoins, étude du site, étude géotechnique.",
-      },
-      {
-        titre: "Esquisse et avant-projets",
-        texte: "Avant-Projet Sommaire (APS), Avant-Projet Définitif (APD).",
-      },
-      {
-        titre: "Études techniques et de structure",
-        texte: "Études de structure, études des fluides (plomberie, climatisation/froid).",
-      },
-      {
-        titre: "Dossier de Consultation des Entreprises (DCE)",
-        texte:
-          "Cahier des Clauses Techniques Particulières (CCTP), Devis Quantitatif et Estimatif (DQE).",
-      },
-      {
-        titre: "Plans d'exécution et planification opérationnelle",
-        texte: "Plans d'exécution, planning prévisionnel.",
-      },
-    ],
+    titre: "Bâtiments et Travaux Publics",
+    accroche: "Études de sites, conception des structures et contrôle de l'exécution.",
+    sections: [{
+      titre: "Bâtiment",
+      prestations: [
+        "Reconnaissance et études des sites (hydrologie, géologie, géotechnique)",
+        "Étude et contrôle de l'exécution de projet",
+        "Études et conception de structures : béton armé, béton précontraint, charpente métallique",
+        "Avant-Projet Sommaire (APS)",
+        "Avant-Projet Détaillé (APD)",
+        "Dossier d'Appel d'Offres (DAO)",
+        "Direction et contrôle d'exécution de travaux",
+      ],
+    }],
     images: ["img_p10_1", "img_p10_2", "img_p10_3", "img_p10_4"],
   },
   {
-    slug: "hydraulique-rurale",
-    numero: 6,
-    titre: "Hydraulique Rurale",
-    accroche: "Mobiliser et gérer l'eau au service du développement rural.",
-    etapes: [
-      {
-        titre: "Identification et diagnostic",
-        texte:
-          "Collecte des données sur le terrain, analyse de faisabilité sociale, économique et environnementale.",
-      },
-      {
-        titre: "Conception et dimensionnement",
-        texte:
-          "Choix des ouvrages de mobilisation, dimensionnement des réseaux et des points d'eau.",
-      },
-      {
-        titre: "Gestion et renforcement des capacités",
-        texte:
-          "Formation des comités d'usagers locaux, répartition équitable de l'eau, sauvegarde du foncier.",
-      },
-      {
-        titre: "Exploitation et maintenance",
-        texte: "Système de suivi, maintenance préventive, réparation des pompes.",
-      },
-    ],
-    images: ["img_p10_5", "img_p10_6", "img_p10_7", "img_p10_8"],
+    slug: "hydraulique",
+    numero: 5,
+    titre: "Hydraulique",
+    accroche: "Hydraulique urbaine, rurale, agricole et fluviale.",
+    sections: [{
+      titre: "Domaines hydrauliques",
+      prestations: [
+        "Hydraulique urbaine d'alimentation en eau potable (AEP) et assainissement urbain",
+        "Hydraulique rurale et villageoise d'alimentation en eau potable (AEP)",
+        "Hydraulique agricole et irrigation",
+        "Hydraulique fluviale",
+      ],
+    }],
+    sousDomaines: HYDRAULIQUE_LINKS,
+    images: ["img_p10_5", "img_p11_1", "img_p12_1", "img_p13_1"],
   },
   {
-    slug: "hydraulique-urbaine-assainissement",
+    slug: "etudes-economiques-institutionnelles",
+    numero: 6,
+    titre: "Études économiques et institutionnelles",
+    accroche: "Études macro-économiques, études de projet et diagnostic d'entreprise.",
+    sections: [
+      {
+        titre: "Études macro-économiques",
+        prestations: [
+          "Études sectorielles (industrie, pêche, habitat, agriculture…)",
+          "Bilans-diagnostics par branche d'activité : emplois, production, investissement, coût…",
+        ],
+      },
+      {
+        titre: "Études de projet",
+        prestations: [
+          "Études d'identification et de localisation",
+          "Études de marché, de pré-faisabilité ou de faisabilité",
+          "Assistance au montage institutionnel et financier",
+        ],
+      },
+      {
+        titre: "Diagnostic d'entreprise et assistance à la gestion",
+        prestations: [
+          "Analyse de la fonction administrative et financière et de la fonction commerciale",
+          "Analyse de la fonction personnelle et du potentiel technique",
+        ],
+      },
+      {
+        titre: "Étude de faisabilité économique",
+        prestations: [
+          "Évaluation du contexte et de l'environnement",
+          "Définition des besoins et des ressources",
+          "Établissement des prévisions financières",
+          "Analyse de la rentabilité et du retour sur investissement",
+          "Évaluation de l'impact socio-économique",
+          "Prise de décision finale (Go / No-Go)",
+        ],
+      },
+      {
+        titre: "Étude de faisabilité financière",
+        prestations: [
+          "Étude, recherche et analyse des informations préliminaires",
+          "Analyse, définition des besoins et modélisation des hypothèses",
+          "Analyse des flux de trésorerie (Cash-flow)",
+          "Estimation de la rentabilité et calcul des ratios clés",
+          "Simulation de scénarios et analyse des risques",
+          "Évaluation finale et décision (Go / No-Go)",
+        ],
+      },
+      {
+        titre: "Étude de faisabilité commerce",
+        prestations: [
+          "Analyse globale et définition de marché",
+          "Analyse et identification de la zone géographique des activités",
+          "Identification de la cible et analyse de la demande",
+          "Analyse de la concurrence",
+          "Définition du mix-marketing et du plan opérationnel",
+        ],
+      },
+    ],
+    images: ["img_p14_4", "img_p14_1", "img_p14_2"],
+  },
+  {
+    slug: "electricite-energies-renouvelables",
     numero: 7,
-    titre: "Hydraulique Urbaine et Assainissement",
-    accroche: "L'eau potable et l'assainissement au cœur du développement urbain.",
-    etapes: [
+    titre: "Électricité et énergie renouvelable",
+    accroche: "Centrales, réseaux électriques et dimensionnement des énergies renouvelables.",
+    sections: [{
+      titre: "Électricité / Énergie renouvelable",
+      prestations: [
+        "Étude des centrales thermiques et nucléaires",
+        "Étude des centrales hydrauliques",
+        "Étude et dimensionnement du transport des lignes à haute et très haute tension et d'acheminement de l'électricité",
+        "Étude des réseaux à moyenne et basse tension",
+        "Étude et dimensionnement de l'énergie solaire, avec capture des rayons du soleil via des panneaux photovoltaïques",
+        "Étude et dimensionnement de l'énergie éolienne terrestre (onshore) ou en mer (offshore) pour transformer cette énergie mécanique en courant électrique",
+        "Étude et dimensionnement de l'énergie hydraulique pour exploiter le mouvement de l'eau (fleuves, barrages, marées), actionner des turbines et produire de l'hydroélectricité",
+      ],
+    }],
+    images: ["img_p13_5", "img_p13_6", "img_p13_7", "img_p13_8"],
+  },
+  {
+    slug: "fluides",
+    numero: 8,
+    titre: "Fluides",
+    accroche: "Études et dimensionnements des fluides frigorigènes et thermodynamiques.",
+    sections: [{
+      titre: "Fluide frigorigène et thermodynamique",
+      prestations: [
+        "Étude et dimensionnements de la compression (vapeur à haute pression)",
+        "Étude et dimensionnements de condensation et liquéfaction",
+        "Étude et dimensionnements sur l'évaporation de gaz à basse pression",
+        "Étude et dimensionnements de rétroaction immédiate (Feedback)",
+        "Étude et dimensionnements sur la concentration totale et fusion",
+        "Étude et dimensionnements de la manipulation et récupération d'un fluide",
+      ],
+    }],
+    images: ["img_p11_1", "img_p11_2", "img_p11_3", "img_p11_4"],
+  },
+  {
+    slug: "ressources-en-eau",
+    numero: 9,
+    titre: "Ressources en eaux",
+    accroche: "Reconnaissance, études hydrauliques, hydrogéologiques et gestion des ressources en eau.",
+    sections: [{
+      titre: "Ressources en eaux",
+      prestations: [
+        "Reconnaissance générale du site",
+        "Études hydrauliques et hydrogéologiques",
+        "Études des ressources en eau",
+        "Calcul et dimensionnement des ouvrages d'art",
+        "Contrôle et supervision des travaux",
+      ],
+    }],
+    images: ["img_p12_2", "img_p12_3", "img_p12_4", "img_p12_6"],
+  },
+  {
+    slug: "environnement-amenagement-territoire",
+    numero: 10,
+    titre: "Environnement & Aménagement du Territoire",
+    accroche: "Diagnostic environnemental, stratégie ERC, planification territoriale et suivi.",
+    sections: [
       {
-        titre: "Étude et diagnostic",
-        texte:
-          "Recueil des données démographiques, topographiques, hydrologiques et géotechniques, évaluation des infrastructures d'eau et d'assainissement.",
+        titre: "Inventaire ou diagnostic initial",
+        prestations: [
+          "Recensement des activités et des flux : consommations d'énergie, matières premières, déchets et pollution",
+          "Analyse des états initiaux des sites et de leur environnement : eau, air, sols et biodiversité",
+        ],
       },
       {
-        titre: "Objectifs de zonage et besoins en eau",
-        texte: "Calcul des volumes d'eau potable, zonage d'assainissement.",
+        titre: "Évaluation et prévision des impacts",
+        prestations: [
+          "Étude des conséquences directes et indirectes des activités sur l'environnement",
+          "Identification et cotation des risques selon leur gravité et leur fréquence",
+        ],
       },
       {
-        titre: "Études techniques de faisabilité",
-        texte:
-          "Comparaison technico-économique du schéma directeur, dimensionnement des canalisations, stations de pompage et de traitement.",
+        titre: "Définition des mesures — stratégie ERC",
+        prestations: [
+          "Suppression des impacts négatifs dès la conception",
+          "Réduction et minimisation des impacts",
+          "Compensation et adoption d'une solution aux dégâts résiduels",
+        ],
       },
       {
-        titre: "Planification financière et institutionnelle",
-        texte:
-          "Calcul du coût d'investissement, recherche de financements, stratégie de gestion.",
+        titre: "Bilan-diagnostic du territoire",
+        prestations: [
+          "Collecte des données démographiques, économiques, environnementales et cartographiques, et des infrastructures existantes",
+          "Analyse territoriale des forces, faiblesses, contraintes, potentialités, déséquilibres spatiaux et besoins prioritaires",
+          "Prospective, définition des scénarios et projection à long terme",
+          "Fixation des objectifs et choix stratégiques",
+          "Montage institutionnel, financier et juridique",
+          "Mise en œuvre et suivi",
+        ],
+      },
+    ],
+    images: ["img_p14_1", "img_p14_2", "img_p14_3", "img_p14_4"],
+  },
+];
+
+export const HYDRAULIQUE_DOMAINS: Domain[] = [
+  {
+    slug: "hydraulique-urbaine-aep-assainissement",
+    numero: 5,
+    titre: "Hydraulique urbaine AEP et assainissement",
+    accroche: "Alimentation en eau potable, collecte et traitement des eaux urbaines.",
+    sections: [
+      {
+        titre: "Hydraulique urbaine d'alimentation en eau potable (AEP)",
+        prestations: [
+          "Étude de captage, prélèvement et extraction de l'eau (nappes souterraines par forage, rivières, lacs ou barrages)",
+          "Étude de traitement sur la potabilisation et l'acheminement de l'eau",
+          "Étude du stockage et de l'acheminement de l'eau potable vers des réservoirs ou des châteaux d'eau pour réguler la pression et garantir une réserve constante",
+          "Étude de la distribution et du transport de l'eau à travers un réseau de canalisations souterraines jusqu'aux habitations, industries et borne-fontaine",
+        ],
+      },
+      {
+        titre: "Assainissement urbain",
+        prestations: [
+          "Étude de la collecte des eaux usées domestiques et industrielles via un réseau d'égouts",
+          "Étude de l'évacuation et de la gestion des eaux de pluie à travers des caniveaux, bassins de rétention et réseaux spécifiques",
+          "Étude du traitement, de l'épuration et de l'acheminement des eaux souillées",
+          "Étude de la maintenance, de l'exploitation et de la surveillance des réseaux",
+          "Études d'impact, dimensionnement des réseaux face à la croissance urbaine et modélisation hydraulique",
+        ],
       },
     ],
     images: ["img_p11_1", "img_p11_2", "img_p11_3", "img_p11_4"],
   },
   {
-    slug: "hydraulique-agricole",
-    numero: 8,
-    titre: "Hydraulique Agricole",
-    accroche: "Irrigation et drainage : sécuriser la production agricole par l'ingénierie.",
-    etapes: [
-      {
-        titre: "Étude, collecte des données et diagnostic",
-        texte: "Levés topographiques, pédologie, climatologie.",
-      },
-      {
-        titre: "Évaluation des ressources en eau et des besoins",
-        texte: "Bilan hydrique, analyse quantitative et qualitative des eaux.",
-      },
-      {
-        titre: "Conception et dimensionnement des ouvrages",
-        texte:
-          "Choix du système d'irrigation/drainage, dimensionnement hydraulique, stations de pompage et de filtration.",
-      },
-      {
-        titre: "Étude économique, financière et environnementale",
-        texte:
-          "Valeur Actuelle Nette (VAN), Étude d'Impact Environnemental et Social (EIES).",
-      },
-      {
-        titre: "Planification opérationnelle et d'exécution",
-        texte:
-          "Plan d'action, chronogramme, Dossier d'Appel d'Offres (DAO), suivi et contrôle des travaux.",
-      },
-    ],
+    slug: "hydraulique-rurale-villageoise",
+    numero: 5,
+    titre: "Hydraulique rurale et villageoise",
+    accroche: "Alimentation en eau potable et gestion durable des ouvrages ruraux.",
+    sections: [{
+      titre: "Hydraulique rurale et villageoise — alimentation en eau potable (AEP)",
+      prestations: [
+        "Étude sur la réalisation des forages et de puits pastoraux, artisanaux ou mécanisés",
+        "Étude sur l'installation de systèmes d'exhaure",
+        "Étude sur les réseaux de distribution, la création de borne-fontaine et de petits réseaux d'adduction d'eau potable (AEP)",
+        "Étude sur la construction de mares artificielles et de puits pastoraux",
+        "Étude sur la gestion des parcours, l'implantation rationnelle et les points d'eau",
+        "Étude sur les ouvrages d'assainissement de base",
+        "Assistance à la formation des associations d'usagers pour l'autonomisation financière et technique des ouvrages",
+      ],
+    }],
+    images: ["img_p10_5", "img_p10_6", "img_p10_7", "img_p10_8"],
+  },
+  {
+    slug: "hydraulique-agricole-irrigation",
+    numero: 5,
+    titre: "Hydraulique agricole et irrigation",
+    accroche: "Conception et gestion des systèmes d'irrigation et des réseaux de distribution.",
+    sections: [{
+      titre: "Hydraulique agricole — irrigation (apport d'eau)",
+      prestations: [
+        "Étude de l'irrigation de surface (gravitaire)",
+        "Étude de l'irrigation par aspersion",
+        "Étude de l'irrigation localisée (goutte-à-goutte)",
+        "Étude sur la conception et la gestion des ouvrages hydrauliques",
+        "Étude des réseaux de distribution, de la construction de canaux d'irrigation, de conduites d'adduction principales et secondaires, et de l'installation de vannes de régulation",
+      ],
+    }],
     images: ["img_p12_1", "img_p12_2", "img_p12_3", "img_p12_4", "img_p12_5", "img_p12_6"],
   },
   {
     slug: "hydraulique-fluviale",
-    numero: 9,
-    titre: "Hydraulique Fluviale",
-    accroche: "Barrages, berges et voies navigables : maîtriser les cours d'eau en toute sécurité.",
-    etapes: [
-      {
-        titre: "Études préliminaires et collecte des données",
-        texte: "Levés topographiques et bathymétriques, études hydrologiques et géotechniques.",
-      },
-      {
-        titre: "Étude et modélisation hydraulique",
-        texte: "Diagnostic technique, analyse structurelle, stabilité des berges.",
-      },
-      {
-        titre: "Évaluation environnementale et sociale",
-        texte: "Étude d'Impact (EIES), biodiversité aquatique, acceptabilité sociale.",
-      },
-      {
-        titre: "Analyse des capacités logistiques et économiques",
-        texte: "Compétitivité du transport fluvial, besoins en dragage.",
-      },
-    ],
+    numero: 5,
+    titre: "Hydraulique fluviale",
+    accroche: "Gestion des risques, prévention des inondations et aménagement des cours d'eau.",
+    sections: [{
+      titre: "Hydraulique fluviale",
+      prestations: [
+        "Étude sur la gestion des risques et la protection",
+        "Étude sur la prévention des inondations, la modélisation des crues, la cartographie des zones inondables et la conception d'ouvrages de protection (digues, barrages de crête)",
+        "Étude sur la gestion des sédiments et le transport du sable et des graviers (charriage) pour éviter l'envasement des cours d'eau ou le creusement excessif du lit",
+        "Étude des infrastructures et du dimensionnement hydraulique des ouvrages d'art et des franchissements",
+        "Étude sur les axes de navigation et les aménagements fluviaux des chenaux navigables",
+        "Étude sur l'environnement et la restauration écologique des tracés naturels, et l'amélioration de la biodiversité des cours d'eau",
+      ],
+    }],
     images: ["img_p13_1", "img_p13_2", "img_p13_3", "img_p13_4"],
   },
-  {
-    slug: "electricite",
-    numero: 10,
-    titre: "Électricité",
-    accroche: "Des réseaux fiables aux énergies renouvelables, une expertise électrique complète.",
-    etapes: [
-      {
-        titre: "Étude de faisabilité, d'opportunité et analyse des besoins",
-        texte: "Estimation de la puissance nécessaire, bilan de puissance, contraintes locales.",
-      },
-      {
-        titre: "Étude de précision",
-        texte:
-          "Tracés exacts, schémas unifilaires, notes de calcul justificatives, schémas électriques détaillés, simulation et tests virtuels, contrôle de conformité.",
-      },
-      {
-        titre: "Étude de protection et de coordination",
-        texte:
-          "Interconnexion réalisable, transit et flux de puissance, stabilité dynamique du réseau.",
-      },
-    ],
-    images: ["img_p13_5", "img_p13_6", "img_p13_7", "img_p13_8"],
-  },
-  {
-    slug: "environnement",
-    numero: 11,
-    titre: "Environnement",
-    accroche: "Chaque projet évalué, chaque impact anticipé, chaque territoire préservé.",
-    etapes: [
-      {
-        titre: "Étude et analyse d'impact environnemental",
-        texte:
-          "Collecte de données sur le milieu récepteur, analyse des variantes, identification et évaluation des impacts.",
-      },
-      {
-        titre: "Mesures d'atténuation et de compensation",
-        texte: "Plan de Gestion Environnementale et Sociale (PGES).",
-      },
-      {
-        titre: "Consultation publique et validation",
-        texte:
-          "Surveillance et suivi environnemental, mesures et plans de protection environnementale, développement durable.",
-      },
-    ],
-    images: ["img_p14_1", "img_p14_2", "img_p14_3"],
-  },
-  {
-    slug: "etudes-economiques-institutionnelles",
-    numero: 12,
-    titre: "Études Économiques et Institutionnelles",
-    accroche:
-      "Analyser, structurer et sécuriser la dimension économique et institutionnelle des projets.",
-    etapes: [
-      {
-        titre: "Études macro-économiques",
-        texte:
-          "Études sectorielles (industrie, pêche, habitat, agriculture), bilans-diagnostics par branche d'activité.",
-      },
-      {
-        titre: "Études de projet",
-        texte:
-          "Identification et localisation, études de marché, de pré-faisabilité ou de faisabilité, assistance au montage institutionnel et financier.",
-      },
-      {
-        titre: "Diagnostic d'entreprise et assistance à la gestion",
-        texte:
-          "Analyse de la fonction administrative et financière, analyse de la fonction commerciale, analyse de la fonction personnelle et du potentiel technique.",
-      },
-    ],
-    images: ["img_p14_4"],
-  },
 ];
+
+export const ALL_DOMAIN_PAGES = [...DOMAINS, ...HYDRAULIQUE_DOMAINS];
 
 export function domainCover(d: Domain): string {
   return photo(d.images[0]);
 }
 
 export function getDomain(slug: string): Domain | undefined {
-  return DOMAINS.find((d) => d.slug === slug);
+  return ALL_DOMAIN_PAGES.find((d) => d.slug === slug);
 }
 
 export type Partner = { nom: string; domaine?: string; logo?: string };
