@@ -10,19 +10,20 @@ export const Route = createFileRoute("/savoir-faire/")({
   component: SavoirFaire,
   head: () => ({
     meta: [
-      { title: "Nos savoir-faire — 12 domaines d'expertise | SIAT-Engineering" },
+      { title: "Nos savoir-faire — 10 domaines d'expertise | SIAT-Engineering" },
       {
         name: "description",
         content:
-          "Études techniques, transports, ouvrages d'art, bâtiments, hydraulique, électricité, environnement, études économiques : les 12 domaines d'expertise du Groupe SIAT-Engineering.",
+          "Études techniques, transport, bâtiments, hydraulique, économie, énergie, fluides, ressources en eau et environnement : les 10 domaines officiels du Groupe SIAT-Engineering.",
       },
-      { property: "og:title", content: "Nos savoir-faire — 12 domaines d'expertise" },
+      { property: "og:title", content: "Nos savoir-faire — 10 domaines d'expertise" },
       {
         property: "og:description",
-        content: "Les 12 domaines d'expertise du Groupe SIAT-Engineering en Afrique.",
+        content: "Les 10 domaines d'expertise du Groupe SIAT-Engineering en Afrique.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/savoir-faire" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/savoir-faire" }],
   }),
@@ -33,7 +34,7 @@ function SavoirFaire() {
     <SiteLayout>
       <PageHero
         eyebrow="Nos savoir-faire"
-        title="12 domaines d'expertise"
+        title="10 domaines d'expertise"
         intro="De l'étude préalable à la réception des ouvrages, une maîtrise complète du cycle de projet."
         image={photo("img_p8_7")}
       />

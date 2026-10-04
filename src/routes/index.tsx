@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Bureau d'études techniques et de supervision de travaux présent dans 6 pays d'Afrique. 12 domaines d'expertise : transport, hydraulique, bâtiment, environnement, électricité.",
+          "Bureau d'études techniques et de supervision de travaux présent dans sept pays d'Afrique. Dix domaines d'expertise : transport, hydraulique, bâtiment, environnement et énergie.",
       },
       { property: "og:title", content: "Groupe SIAT-Engineering — L'ingénierie des infrastructures durables" },
       {
@@ -26,6 +26,7 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
@@ -244,7 +245,7 @@ function Domaines() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionTitle
           eyebrow="Nos savoir-faire"
-          title="12 domaines d'expertise"
+          title="10 domaines d'expertise"
           intro="L'expertise de Groupe SIAT-Engineering couvre la création, la conception, la modernisation des infrastructures modernes. Ils se développent sur la base des méthodes de calcul spécifiques et des règlements les plus récents, en tenant compte des techniques d'exécution les plus appropriées."
         />
 
@@ -301,11 +302,11 @@ function Domaines() {
                 {domain.accroche}
               </p>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                {domain.etapes.slice(0, 4).map((e) => (
-                  <li key={e.titre} className="rounded-sm bg-surface p-4">
-                    <p className="font-display text-sm font-semibold text-foreground">{e.titre}</p>
+                {domain.sections.slice(0, 4).map((section) => (
+                  <li key={section.titre} className="rounded-sm bg-surface p-4">
+                    <p className="font-display text-sm font-semibold text-foreground">{section.titre}</p>
                     <p className="text-block mt-1 text-xs leading-relaxed text-muted-foreground">
-                      {e.texte}
+                      {section.prestations.slice(0, 2).join(" • ")}
                     </p>
                   </li>
                 ))}

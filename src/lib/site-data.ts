@@ -598,7 +598,7 @@ export const VALEURS = [
 
 export const CHIFFRES = [
   { valeur: "7", label: "Pays d'implantation" },
-  { valeur: "12", label: "Domaines d'expertise" },
+  { valeur: "10", label: "Domaines d'expertise" },
   { valeur: "48%", label: "Chiffre d'affaires à l'export" },
   { valeur: "ISO", label: "Certification en cours" },
 ];

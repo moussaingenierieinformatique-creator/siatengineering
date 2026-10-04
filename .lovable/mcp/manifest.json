@@ -52,7 +52,7 @@
       {
         "name": "list_expertise_domains",
         "title": "Lister les domaines d'expertise",
-        "description": "Liste les 12 domaines d'expertise de Groupe SIAT-Engineering (numéro, slug, titre, accroche).",
+        "description": "Liste les 10 domaines d'expertise de Groupe SIAT-Engineering (numéro, slug, titre, accroche).",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -73,7 +73,7 @@
       {
         "name": "get_expertise_domain",
         "title": "Détail d'un domaine d'expertise",
-        "description": "Renvoie le détail complet d'un domaine d'expertise (titre, accroche et étapes) à partir de son slug ou de son numéro.",
+        "description": "Renvoie les prestations officielles d'un domaine d'expertise à partir de son slug ou de son numéro.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -85,7 +85,7 @@
           "properties": {
             "slug": {
               "type": "string",
-              "description": "Slug du domaine, par exemple 'etudes-techniques', ou son numéro (1 à 12)."
+              "description": "Slug du domaine, par exemple 'etudes-techniques', ou son numéro (1 à 10)."
             }
           },
           "required": [

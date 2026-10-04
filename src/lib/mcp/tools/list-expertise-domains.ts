@@ -6,7 +6,7 @@ export default defineTool({
   name: "list_expertise_domains",
   title: "Lister les domaines d'expertise",
   description:
-    "Liste les 12 domaines d'expertise de Groupe SIAT-Engineering (numéro, slug, titre, accroche).",
+    "Liste les 10 domaines d'expertise de Groupe SIAT-Engineering (numéro, slug, titre, accroche).",
   inputSchema: {
     recherche: z
       .string()

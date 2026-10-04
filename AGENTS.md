@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep expertise content centralized in `src/lib/site-data.ts`; the website, sitemap, and public MCP tools must consume the same records so official domain text stays consistent.

@@ -16,7 +16,7 @@ export const Route = createFileRoute("/a-propos")({
       {
         name: "description",
         content:
-          "Le Groupe SIAT-Engineering : société d'ingénierie régionale implantée dans 6 pays d'Afrique, mot du PDG, valeurs et direction générale.",
+          "Le Groupe SIAT-Engineering : société d'ingénierie régionale implantée dans sept pays d'Afrique, mot du PDG, valeurs et direction générale.",
       },
       { property: "og:title", content: "À propos — Groupe SIAT-Engineering" },
       {
@@ -26,6 +26,7 @@ export const Route = createFileRoute("/a-propos")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/a-propos" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/a-propos" }],
   }),
@@ -274,7 +275,7 @@ function APropos() {
           to="/savoir-faire"
           className="mt-12 inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
         >
-          Découvrir nos 12 domaines d'expertise <ArrowRight className="h-4 w-4" />
+          Découvrir nos 10 domaines d'expertise <ArrowRight className="h-4 w-4" />
         </Link>
       </section>
     </SiteLayout>
