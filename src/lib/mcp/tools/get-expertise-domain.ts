@@ -29,7 +29,8 @@ export default defineTool({
       slug: domain.slug,
       titre: domain.titre,
       accroche: domain.accroche,
-      etapes: domain.etapes,
+      sections: domain.sections,
+      sousDomaines: domain.sousDomaines,
     };
 
     return {

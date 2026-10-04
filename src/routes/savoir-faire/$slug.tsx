@@ -30,7 +30,11 @@ export const Route = createFileRoute("/savoir-faire/$slug")({
 
 function DomainePage() {
   const domain = Route.useLoaderData() as Domain;
-  const idx = DOMAINS.findIndex((d) => d.slug === domain.slug);
+  const parentIndex = DOMAINS.findIndex((d) => d.slug === domain.slug);
+  const hydraulicIndex = domain.slug.startsWith("hydraulique-")
+    ? DOMAINS.findIndex((d) => d.slug === "hydraulique")
+    : -1;
+  const idx = parentIndex >= 0 ? parentIndex : hydraulicIndex;
   const next = DOMAINS[(idx + 1) % DOMAINS.length];
   const cover = photo(domain.images[0]);
   const gallery = domain.images.slice(1).map(photo);
@@ -63,20 +67,45 @@ function DomainePage() {
       <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-[1.2fr_1fr]">
           <div>
-            <p className="eyebrow">Notre méthodologie</p>
-            <ol className="mt-8 space-y-8">
-              {domain.etapes.map((e, i) => (
-                <li key={e.titre} className="flex gap-5">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-primary font-display text-sm font-bold text-primary-foreground">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <h2 className="font-display text-lg font-semibold text-foreground">{e.titre}</h2>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{e.texte}</p>
-                  </div>
-                </li>
+            <p className="eyebrow">Prestations du domaine</p>
+            <div className="mt-8 space-y-10">
+              {domain.sections.map((section) => (
+                <section key={section.titre}>
+                  <h2 className="font-display text-xl font-semibold text-foreground">
+                    {section.titre}
+                  </h2>
+                  <ul className="mt-4 space-y-3">
+                    {section.prestations.map((prestation) => (
+                      <li key={prestation} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                        <span>{prestation}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
               ))}
-            </ol>
+            </div>
+
+            {domain.sousDomaines && domain.sousDomaines.length > 0 && (
+              <div className="mt-12 border-t border-border pt-8">
+                <h2 className="font-display text-xl font-semibold text-foreground">
+                  Spécialités hydrauliques
+                </h2>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {domain.sousDomaines.map((item) => (
+                    <Link
+                      key={item.slug}
+                      to="/savoir-faire/$slug"
+                      params={{ slug: item.slug }}
+                      className="flex items-center justify-between rounded-sm border border-border bg-card p-4 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
+                    >
+                      {item.titre}
+                      <ArrowRight className="h-4 w-4 shrink-0" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
           <aside className="h-fit rounded-sm border border-border bg-surface p-8">
             <h2 className="font-display text-lg font-semibold text-foreground">
