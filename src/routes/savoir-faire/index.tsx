@@ -23,6 +23,7 @@ export const Route = createFileRoute("/savoir-faire/")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/savoir-faire" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/savoir-faire" }],
   }),

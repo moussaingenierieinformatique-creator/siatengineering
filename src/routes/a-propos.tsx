@@ -26,6 +26,7 @@ export const Route = createFileRoute("/a-propos")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/a-propos" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/a-propos" }],
   }),

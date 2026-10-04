@@ -22,6 +22,7 @@ export const Route = createFileRoute("/savoir-faire/$slug")({
         { property: "og:description", content: accroche },
         { property: "og:type", content: "article" },
         { property: "og:url", content: `/savoir-faire/${params.slug}` },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
       links: [{ rel: "canonical", href: `/savoir-faire/${params.slug}` }],
     };
