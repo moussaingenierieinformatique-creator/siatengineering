@@ -161,8 +161,17 @@ export function Footer() {
 
         </div>
 
-        <div className="mt-14 flex flex-col gap-2 border-t border-primary-foreground/15 pt-6 text-xs text-primary-foreground/55 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-primary-foreground/15 pt-6 text-xs text-primary-foreground/55 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Groupe SIAT-Engineering — SARL. Tous droits réservés.</p>
+          <a
+            href={SITE.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-semibold text-primary-foreground underline decoration-accent underline-offset-4 transition-opacity hover:opacity-80"
+          >
+            <Globe className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+            Accéder au site&nbsp;: {SITE.urlLabel}
+          </a>
         </div>
       </div>
     </footer>
