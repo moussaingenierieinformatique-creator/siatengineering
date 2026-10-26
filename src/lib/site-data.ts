@@ -14,9 +14,6 @@ export const SITE = {
   baseline: "L'ingénierie au service des infrastructures durables en Afrique.",
   email: "contact@siat-engineering.com",
   hq: "Garoua, Cameroun",
-  // Adresse de consultation tant que groupesiatengineering.com n'est pas configuré.
-  url: "https://siatengineering.lovable.app",
-  urlLabel: "siatengineering.lovable.app",
 };
 
 export type Contact = {
